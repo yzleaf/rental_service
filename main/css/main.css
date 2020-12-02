@@ -1,12 +1,24 @@
-/* check error message */
-.mess-check {
-	color: #ff0000;
+/* header */
+.navbar-brand {
+	background-image: url(../img/logo.png);
+	width: 80px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
-.mess-check-total {
-	color: #ff0000;
-	text-align: center;
+/* button */
+.btn-primary {
+	background-color: #cad244;
+	border-color: #cac844;
 }
+
+.btn-primary:hover {
+	background-color: #AAAA55;
+	border-color: #cac844;
+}
+
+
 
 /* footer */
 .footer {
@@ -40,3 +52,7 @@
 	padding: 0;
 	margin-bottom: 16px;
 }
+
+
+background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+

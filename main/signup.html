@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>index</title>
+	<title>signup</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="js/logSignCheck.js"></script>
@@ -12,15 +12,13 @@
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="index.html" class="navbar-brand">
-					<span class="logo">WOW</span>
-				</a>
+				<a href="index.html" class="navbar-brand"></a>
 			</div>
 			<label id="toggle-label" class="visible-xs-inline-block" for="toggle-checkbox">Menu</label>
 			<input id="toggle-checkbox" type="checkbox" class="hidden">
 			<div class="hidden-xs">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
+					<li><a href="index.html">Home</a></li>
 					<li><a href="#">Location</a></li>
 					<li><a href="#">Car</a></li>
 				</ul>
@@ -61,16 +59,31 @@
 				</div>
 				<div class="form-group">
 					<label for="">password</label>
-					<input type="password" class="form-control">
+					<input type="password" class="form-control" id="password" onblur="checkNull('password','password');">
 				</div>
 				<div class="form-group">
-					<label for="">验证码</label>
-					<div class="input-group">
-						<input type="text" class="form-control">
-						<div class="input-group-btn">
-							<div class="btn btn-default">获取验证码</div>
-						</div>
-					</div>
+					<label for="">customer type</label>
+					<div class="cust-options">
+			            <input type="radio" name="options"> individual
+			            <input type="radio" name="options" style="margin-left: 190px;"> corporate
+				    </div>
+			    </div>
+			    <div class="form-group">
+					<label for="">street</label>
+					<input type="text" class="form-control" id="street" onblur="checkNull('street','street');">
+				</div>
+				<div class="form-group">
+					<label for="">city</label>
+					<input type="text" class="form-control" id="city" onblur="checkNull('city','city');">
+				</div>
+				<div class="form-group">
+					<label for="">state</label>
+					<input type="text" class="form-control" id="state" onblur="checkNull('state','state');">
+				</div>
+				<div class="form-group">
+					<label for="">zip code</label>
+					<input type="text" class="form-control" id="zip-code" onblur="checkZipCode('zip-code'); checkNull('zip-code','zip-code');">
+					<p id="mess_zip" class="mess-check"></p>
 				</div>
 				<div class="form-group">
 					<button class="btn btn-primary btn-block" type="submit">SIGNUP</button>

@@ -1,5 +1,5 @@
+//check empty
 function checkNull(obj, vline) {
-  //check empty
   var v=document.getElementById(obj).value;
   v=v.replace(/(^\s*)|(\s*$)/g,"");
   if (v.length==0){
@@ -21,7 +21,7 @@ function closewin() {
 //检查输入字符串是否为数字
 //参数说明：数据项，输入的对象
 //返回值：1-是数字,0-非数字
-function isNum(vid, obj){
+function isNum(vid, obj) {
   re=new RegExp("[^0-9]");
   var s;
   var i_value=document.getElementById(obj).value;
@@ -46,8 +46,7 @@ function checkPhone(str) {
 }
 
 //check email
-function checkMail(str)
-{
+function checkMail(str) {
   var Str=document.getElementById(str).value;
   RegularExp = /[a-z0-9]*@[a-z0-9]*\.[a-z0-9]+/gi
   if (RegularExp.test(Str)) {
@@ -59,7 +58,18 @@ function checkMail(str)
   }
 }
 
-
+//check zip code
+function checkZipCode(str) {
+  var Str=document.getElementById(str).value;
+  RegularExp=/^[0-9]{5}$/
+  if (RegularExp.test(Str)) {
+    document.getElementById('mess_zip').innerHTML = "";
+    return true;
+  } else {
+    document.getElementById('mess_zip').innerHTML = "The zip code format is invalid! Length must be 5";
+    return false;
+  }
+}
 
 
 
