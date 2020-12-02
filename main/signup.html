@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>index</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/logSignCheck.js"></script>
+</head>
+<body>
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">
+					<span class="logo">WOW</span>
+				</a>
+			</div>
+			<label id="toggle-label" class="visible-xs-inline-block" for="toggle-checkbox">Menu</label>
+			<input id="toggle-checkbox" type="checkbox" class="hidden">
+			<div class="hidden-xs">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Location</a></li>
+					<li><a href="#">Car</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="login.html">Login</a></li>
+					<li class="active"><a href="signup.html">Signup</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container container-small">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<h1>Signup
+			</h1>
+			<form action="">
+				<div class="form-group">
+					<div class="col-md-6">
+						<label for="">first name</label>
+						<input type="text" class="form-control" id="first-name" onblur="checkNull('first-name','first-name');">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-6">
+						<label for="">last name</label>
+						<input type="text" class="form-control" id="last-name" onblur="checkNull('last-name','last-name');">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="">email address</label>
+					<input type="text" class="form-control" id="email" onblur="checkMail('email'); checkNull('email','email');">
+					<p id="mess_email" class="mess-check"></p>
+				</div>
+				<div class="form-group">
+					<label for="">phone number</label>
+					<input type="text" class="form-control" id="phone" onblur="checkPhone('phone'); checkNull('phone','phone');">
+					<p id="mess_phone" class="mess-check"></p>
+				</div>
+				<div class="form-group">
+					<label for="">password</label>
+					<input type="password" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="">验证码</label>
+					<div class="input-group">
+						<input type="text" class="form-control">
+						<div class="input-group-btn">
+							<div class="btn btn-default">获取验证码</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary btn-block" type="submit">SIGNUP</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-3"></div>	
+	</div>
+	<div id="mess_total" class="mess-check-total"></div>
+	<div class="footer">
+		WOW
+	</div>
+</body>
+</html>
