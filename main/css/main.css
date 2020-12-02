@@ -18,7 +18,15 @@
 	border-color: #cac844;
 }
 
+/* check error */
+.mess-check {
+ color: #ff0000;
+}
 
+.mess-check-total {
+ color: #ff0000;
+ text-align: center;
+}
 
 /* footer */
 .footer {
@@ -53,6 +61,13 @@
 	margin-bottom: 16px;
 }
 
+.swiper-container {
+    width: 1000px;
+    height: 400px;
+    margin-bottom: 50px;
+}
 
-background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+.swiper-wrapper {
+	text-align: center;
+}
 
