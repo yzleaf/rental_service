@@ -23,8 +23,8 @@
 					<li><a href="#">Car</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="login.html">Login</a></li>
-					<li><a href="signup.html">Signup</a></li>
+					<li class="active"><a href="login.php">Login</a></li>
+					<li><a href="signup.php">Signup</a></li>
 				</ul>
 			</div>
 		</div>
