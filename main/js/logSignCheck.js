@@ -71,5 +71,18 @@ function checkZipCode(str) {
   }
 }
 
+//µ¥Ñ¡¿òÌø×ª
+function checkOptions() {
+  var radio = document.getElementsByName("options");
+  var a = document.getElementById("link");
+  console.log(radio);
+  if (radio[0].checked==true && radio[1].checked==false) {
+    a.href = "signupIndi.php";
+  } 
+  else if (radio[0].checked==false && radio[1].checked==true) {
+    a.href = "signupCorp.php";
+  }
+}
+  
 
 

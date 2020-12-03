@@ -33,65 +33,38 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<h2>Signup</h2>
+			<h3 style="text-align:center; color:#777;">please select your customer type : </h3>
 			<form action="">
 				<div class="form-group">
-					<div class="col-md-6">
-						<label for="">first name</label>
-						<input type="text" class="form-control" id="first-name" onblur="checkNull('first-name','first-name');">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-6">
-						<label for="">last name</label>
-						<input type="text" class="form-control" id="last-name" onblur="checkNull('last-name','last-name');">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="">email address</label>
-					<input type="text" class="form-control" id="email" onblur="checkMail('email'); checkNull('email','email');">
-					<p id="mess_email" class="mess-check"></p>
-				</div>
-				<div class="form-group">
-					<label for="">phone number</label>
-					<input type="text" class="form-control" id="phone" onblur="checkPhone('phone'); checkNull('phone','phone');">
-					<p id="mess_phone" class="mess-check"></p>
-				</div>
-				<div class="form-group">
-					<label for="">password</label>
-					<input type="password" class="form-control" id="password" onblur="checkNull('password','password');">
-				</div>
-				<div class="form-group">
-					<label for="">customer type</label>
 					<div class="cust-options">
-			            <input type="radio" name="options"> individual
-			            <input type="radio" name="options" style="margin-left: 190px;"> corporate
+						<div class="col-md-6"><input type="radio" name="options" checked> individual</div>
+						<div class="col-md-6"><input type="radio" name="options"> corporate</div>   
 				    </div>
 			    </div>
-			    <div class="form-group">
-					<label for="">street</label>
-					<input type="text" class="form-control" id="street" onblur="checkNull('street','street');">
-				</div>
-				<div class="form-group">
-					<label for="">city</label>
-					<input type="text" class="form-control" id="city" onblur="checkNull('city','city');">
-				</div>
-				<div class="form-group">
-					<label for="">state</label>
-					<input type="text" class="form-control" id="state" onblur="checkNull('state','state');">
-				</div>
-				<div class="form-group">
-					<label for="">zip code</label>
-					<input type="text" class="form-control" id="zip-code" onblur="checkZipCode('zip-code'); checkNull('zip-code','zip-code');">
-					<p id="mess_zip" class="mess-check"></p>
-				</div>
-				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit">SIGNUP</button>
-				</div>
 			</form>
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<a id="link" onclick="checkOptions();">
+					<button class="btn btn-primary btn-block" type="submit" style="margin-top:50px;">Start Signup</button>
+				</a>
+				<script>
+					function checkOptions() {
+					  var radio = document.getElementsByName("options");
+					  var a = document.getElementById("link");
+					  console.log(radio);
+					  if (radio[0].checked==true && radio[1].checked==false) {
+					    a.href = "signupIndi.php";
+					  } 
+					  else if (radio[0].checked==false && radio[1].checked==true) {
+					    a.href = "signupCorp.php";
+					  }
+					}
+				</script>	
+			</div>
+			<div class="col-md-3"></div>
 		</div>
 		<div class="col-md-3"></div>	
 	</div>
-	<div id="mess_total" class="mess-check-total"></div>
 	<div class="footer">
 		WOW | qwert@wow.com | 358-224-6785
 	</div>
