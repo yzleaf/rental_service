@@ -35,7 +35,7 @@
 			<h2>Signup</h2>
 			<form action="">
 				<div class="form-group">
-					<label for="" style="font-size:150%; color:#AAAA55;">Indevidual Customer</label>
+					<label for="" style="font-size:150%; color:#AAAA55;">Corporate Customer</label>
 			    </div>
 				<div class="form-group">
 					<div class="col-md-6">
@@ -81,15 +81,15 @@
 					<p id="mess_zip" class="mess-check"></p>
 				</div>
 				<div class="form-group">
-					<label for="">driver license number</label>
+					<label for="">employee id</label>
 					<input type="text" class="form-control" id="dln" onblur="checkNull('dln','dln');">
 				</div>
 				<div class="form-group">
-					<label for="">insurance company name</label>
+					<label for="">corporate registration number</label>
 					<input type="text" class="form-control" id="iname" onblur="checkNull('iname','iname');">
 				</div>
 				<div class="form-group">
-					<label for="">insurance policy number</label>
+					<label for="">corporation name</label>
 					<input type="text" class="form-control" id="inum" onblur="checkNull('inum','inum');">
 				</div>
 				<div class="form-group">
