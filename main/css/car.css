@@ -1,0 +1,9 @@
+.input-group-addon {
+	padding: 0;
+	border: 0; 
+}
+
+.choice {
+	text-align: center;
+	padding: 5px 0;
+}

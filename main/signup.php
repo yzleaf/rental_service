@@ -19,8 +19,8 @@
 			<div class="hidden-xs">
 				<ul class="nav navbar-nav">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="#">Location</a></li>
-					<li><a href="#">Car</a></li>
+					<li><a href="location.php">Location</a></li>
+					<li><a href="car.php">Car</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="login.php">Login</a></li>
@@ -32,8 +32,7 @@
 	<div class="container container-small">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<h1>Signup
-			</h1>
+			<h2>Signup</h2>
 			<form action="">
 				<div class="form-group">
 					<div class="col-md-6">

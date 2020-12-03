@@ -1,0 +1,27 @@
+/* side bar */
+.side-bar .list-group-item {
+	border: 0;
+	margin-bottom: 5px;
+	border-radius: 3px;
+}
+
+.side-bar .list-group-item.active {
+	background-color: #cad244;
+}
+
+/* button */
+.btn-primary {
+	background-color: #cad244;
+	border-color: #cac844;
+}
+
+.btn-primary:hover {
+	background-color: #AAAA55;
+	border-color: #cac844;
+}
+
+.btn-primary.active ,.btn-primary.active:hover {
+	background-color: #AAAA55;
+	border-color: #cac844;
+}
+
