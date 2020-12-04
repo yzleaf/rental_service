@@ -36,6 +36,7 @@
 			<form action="">
 				<div class="form-group">
 					<label for="" style="font-size:150%; color:#AAAA55;">Corporate Customer</label>
+					<input class="hidden" name="cust_type" value="C">
 			    </div>
 				<div class="form-group">
 					<div class="col-md-6">

@@ -35,7 +35,8 @@
 			<h2>Signup</h2>
 			<form action="">
 				<div class="form-group">
-					<label for="" style="font-size:150%; color:#AAAA55;">Indevidual Customer</label>
+					<label for="" style="font-size:150%; color:#AAAA55;">Individual Customer</label>
+					<input class="hidden" name="cust_type" value="I">
 			    </div>
 				<div class="form-group">
 					<div class="col-md-6">

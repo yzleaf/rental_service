@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/car.css">
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>  
     <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 </head>
@@ -39,56 +38,35 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="input-group">
-					<span class="input-group-addon">
-						<div class="dropdown" style="padding: 0;">
-							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							Make
-						    <span class="caret"></span>
-					    	</button>
-						    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							    <li class="choice">make 1</li>
-							    <li class="choice">make 2</li>
-							    <li class="choice">make 3</li>
-						    </ul>
-						</div>
-					</span>
-					<input type="text" class="form-control" placeholder="car brand">
+					<span class="input-group-addon">Make</span>
+					<select class="form-control">
+						<option>All</option>
+						<option>Make 1</option>
+					  	<option>Make 2</option>
+					  	<option>Make 3</option>
+					</select>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="input-group">
-					<span class="input-group-addon">
-						<div class="dropdown" style="padding: 0;">
-							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							Class
-						    <span class="caret"></span>
-					    	</button>
-						    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-							    <li class="choice">class 1</li>
-							    <li class="choice">class 2</li>
-							    <li class="choice">class 3</li>
-						    </ul>
-						</div>
-					</span>
-					<input type="text" class="form-control" placeholder="class name">
+					<span class="input-group-addon">Class</span>
+					<select class="form-control">
+						<option>All</option>
+						<option>Class 1</option>
+					  	<option>Class 2</option>
+					  	<option>Class 3</option>
+					</select>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="input-group">
-					<span class="input-group-addon">
-						<div class="dropdown" style="padding: 0;">
-							<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							Year
-						    <span class="caret"></span>
-					    	</button>
-						    <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-							    <li class="choice">year 1</li>
-							    <li class="choice">year 2</li>
-							    <li class="choice">year 3</li>
-						    </ul>
-						</div>
-					</span>
-					<input type="text" class="form-control" placeholder="year after">
+					<span class="input-group-addon">Year</span>
+					<select class="form-control">
+						<option>All</option>
+						<option>Year 1</option>
+					  	<option>Year 2</option>
+					  	<option>Year 3</option>
+					</select>
 				</div>
 			</div>
 			<div class="col-sm-offset-10">
