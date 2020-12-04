@@ -70,7 +70,9 @@
 				</div>
 			</div>
 			<div class="col-sm-offset-10">
-				<a href="#"><button class="btn btn-primary btn-block" type="submit">Search Cars</button></a>
+				<a href="#" style="text-decoration:none;">
+					<button class="btn btn-primary btn-block" type="submit">Search Cars</button>
+				</a>
 			</div>
 		</div>
 		<div class="row">

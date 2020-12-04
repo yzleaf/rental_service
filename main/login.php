@@ -33,6 +33,9 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<h2>Login</h2>
+			<?php if (1 == 0): ?>
+				<div class="alert alert-danger" role="alert">WRONG!!!</div>
+			<?php endif ?>
 			<div class="form-group">
 				Do not have account now? <a href="signup.php">Signup</a>
 			</div>

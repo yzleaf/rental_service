@@ -44,11 +44,26 @@
 			<div class="col-md-2"></div>
 		</div>
 		<div id="myMap">
-			<a href="#"><button class="map-btn" style="top:185px; left:1100px;">1</button></a>
-			<a href="#"><button class="map-btn" style="top:260px; left:1050px;">2</button></a>
-			<a href="#"><button class="map-btn" style="top:160px; left:1221px;">3</button></a>
-			<a href="#"><button class="map-btn" style="top:400px; left:100px;">4</button></a>
-			<a href="#"><button class="map-btn" style="top:580px; left:580px;">5</button></a>
+			<form action="locDetail.php" target="_blank">
+				<input class="hidden" name="loc1" value="#">
+				<button type="submit" class="map-btn" style="top:185px; left:1100px;">1</button>
+			</form>
+			<form action="locDetail.php" target="_blank">
+				<input class="hidden" name="loc2" value="#">
+				<button type="submit" class="map-btn" style="top:260px; left:1050px;">2</button>
+			</form>
+			<form action="locDetail.php" target="_blank">
+				<input class="hidden" name="loc3" value="#">
+				<button type="submit" class="map-btn" style="top:160px; left:1221px;">3</button>
+			</form>
+			<form action="locDetail.php" target="_blank">
+				<input class="hidden" name="loc4" value="#">
+				<button type="submit" class="map-btn" style="top:400px; left:100px;">4</button>
+			</form>
+			<form action="locDetail.php" target="_blank">
+				<input class="hidden" name="loc5" value="#">
+				<button type="submit" class="map-btn" style="top:580px; left:580px;">5</button>
+			</form>
 		</div>
 	</div>
 	<div class="footer" style="margin-top: 930px; padding: 0;">

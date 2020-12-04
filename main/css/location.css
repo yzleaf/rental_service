@@ -16,3 +16,19 @@
 	position: absolute;
 	z-index: 1;
 }
+
+/* info in detail */
+.loc_info_total {
+	padding-top: 15px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+}
+
+.loc_img {
+	border-radius: 8px;
+}
+
+h3 {
+	font-weight: 80%;
+	color: #888;
+}
