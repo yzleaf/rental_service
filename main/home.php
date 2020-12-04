@@ -1,3 +1,9 @@
+<?php
+	require_once ('./php_operation/common.php');
+	$user_name = getCookieVal('cookie_uname');
+	$user_type = getCookieVal('cookie_utype');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,13 +29,13 @@
 					<li><a href="location.php">Location</a></li>
 					<li><a href="car.php">Car</a></li>
 				</ul>
-				<?php if (true): ?>
+				<?php if (!empty($user_name)): ?>
 					<ul class="nav navbar-nav navbar-right">
-						<li><div style="margin-top: 15px; color: #AAAA55;">Welcome! XXX</div></li>
+						<li><div style="margin-top: 15px; color: #AAAA55;">Welcome! <?php echo $user_name; ?></div></li>
 					    <li><a href="logout.php">Logout</a></li>
 					</ul>	
 				<?php endif ?>
-				<?php if (false): ?>
+				<?php if (empty($user_name)): ?>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="login.php">Login</a></li>
 						<li><a href="signup.php">Signup</a></li>

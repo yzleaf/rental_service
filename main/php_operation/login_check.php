@@ -1,6 +1,6 @@
 <?php
 include ('conn.php');
-
+require_once ('common.php');
 
 
 if (!isset($_POST['submit'])) { // whether click the button
@@ -20,13 +20,18 @@ $password = md5($password); // encript
 // ---------test end
 
 
-$check_query = mysqli_query($conn, "SELECT u_id FROM user_password WHERE username='$username' and password='$password' limit 0, 1");
+$check_query = mysqli_query($conn, "SELECT u_id, u_type FROM user_password WHERE username='$username' and password='$password' limit 0, 1");
 $result = mysqli_fetch_array($check_query);
 
 if ($result) {
     // echo "Success Log In <br>";
     // exit();
     $login_res = 'T';
+
+    // set cookie to remember status of user
+    // setcookie('cookie_uname',$username);
+    // setcookie('cookie_utpye',$result['u_type']);
+    login($username, $result['u_type']);
 }
 else {
     // echo 'Fail Log In! Error user name or password',mysqli_error($conn),'<br />';

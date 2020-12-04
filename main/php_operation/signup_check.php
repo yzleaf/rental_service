@@ -29,7 +29,7 @@ if (mysqli_fetch_array($check)) {
 }
 
 // insert the new user to the user_password table
-$sql_insert_user_pw = "INSERT INTO user_password(username, password) VALUES('$username','$password')";
+$sql_insert_user_pw = "INSERT INTO user_password(username, password, u_type) VALUES('$username','$password','CUSTOMER')";
 $result = mysqli_query($conn, $sql_insert_user_pw);
 if ($result) {
     // success 
