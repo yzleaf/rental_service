@@ -36,18 +36,18 @@
 			<div class="form-group">
 				Do not have account now? <a href="signup.php">Signup</a>
 			</div>
-			<form action="">
+			<form action="checkLogin.php" method="post">
 				<div class="form-group">
 					<label for="">email</label>
-					<input type="text" class="form-control" id="email" onblur="checkMail('email'); checkNull('email','email');">
+					<input type="text" class="form-control" id="email" name="email" onblur="checkMail('email'); checkNull('email','email');">
 					<p id="mess_email" class="mess-check"></p>
 				</div>
 				<div class="form-group">
 					<label for="">password</label>
-					<input type="password" class="form-control" id="password" onblur="checkNull('password','password');">
+					<input type="password" class="form-control" id="password" name="password" onblur="checkNull('password','password');">
 				</div>
 				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit">LOGIN</button>
+					<button class="btn btn-primary btn-block" type="submit" name="submit">LOGIN</button>
 				</div>
 				<div class="form-group">
 					<a href="forgetPW.php">Forget password?</a>

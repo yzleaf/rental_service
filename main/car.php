@@ -36,49 +36,54 @@
 	</div>
 	<div class="container">
 		<div class="row">
+			<form action="" method="post">
 			<div class="col-sm-3">
 				<div class="input-group">
 					<span class="input-group-addon">Make</span>
-					<select class="form-control">
-						<option>All</option>
-						<option>Make 1</option>
-					  	<option>Make 2</option>
-					  	<option>Make 3</option>
+						<select class="form-control" name="make">
+							<option value="All">All</option>
+							<option value="M1">Make 1</option>
+							<option value="M2">Make 2</option>
+							<option value="M3">Make 3</option>
 					</select>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="input-group">
 					<span class="input-group-addon">Class</span>
-					<select class="form-control">
-						<option>All</option>
-						<option>Class 1</option>
-					  	<option>Class 2</option>
-					  	<option>Class 3</option>
+						<select class="form-control" name="class">
+							<option value="All">All</option>
+							<option value="C1">Class 1</option>
+							<option value="C2">Class 2</option>
+							<option value="C3">Class 3</option>
 					</select>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="input-group">
 					<span class="input-group-addon">Year</span>
-					<select class="form-control">
-						<option>All</option>
-						<option>Year 1</option>
-					  	<option>Year 2</option>
-					  	<option>Year 3</option>
+						<select class="form-control" name="year">
+							<option value="All">All</option>
+							<option value="Y1">Year 1</option>
+							<option value="Y2">Year 2</option>
+							<option value="Y3">Year 3</option>
 					</select>
 				</div>
 			</div>
 			<div class="col-sm-offset-10">
 				<a href="#" style="text-decoration:none;">
-					<button class="btn btn-primary btn-block" type="submit">Search Cars</button>
+					<button class="btn btn-primary btn-block" type="submit" name="submit">Search Cars</button>
 				</a>
 			</div>
+			</form>
 		</div>
 		<div class="row">
-			CAR: 
+			<!-- CAR: 
 		    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt ipsa neque voluptas beatae quidem iusto, assumenda facilis excepturi ullam obcaecati laborum error iste sed culpa quos hic accusamus quod, deleniti.
-		    Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Eligendi saepe odit vel eveniet qui fugiat dicta nostrum atque dolorem ab minima tempore, libero cupiditate totam voluptatem, ad tempora recusandae quam.
+		    Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Eligendi saepe odit vel eveniet qui fugiat dicta nostrum atque dolorem ab minima tempore, libero cupiditate totam voluptatem, ad tempora recusandae quam. -->
+			<?php
+				include('./php_operation/car_display.php');
+			?>
 		</div>
 	</div>
 	<div class="footer">

@@ -1,3 +1,6 @@
+<?php
+	include ('./php_operation/login_check.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,14 +35,14 @@
 	<div class="container container-small">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-		<?php if (true): ?>
+		<?php if ($login_res == 'T'): ?>
 			<!-- 给一个session -->
 			<div class="alert alert-success" role="alert">
 				<h3>Success!</h3>
 				Click <a href="home.php" class="alert-link">here</a> to go forward
 			</div>
 		<?php endif ?>
-		<?php if (false): ?>
+		<?php if ($login_res == 'F'): ?>
 			<div class="alert alert-danger" role="alert">
 				<h3>Fail!</h3>
 				Click <a href="login.php" class="alert-link">here</a> to go back
