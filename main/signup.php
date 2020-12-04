@@ -44,7 +44,7 @@
 			</form>
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
-				<a id="link" onclick="checkOptions();">
+				<a id="link" onclick="checkOptions();" style="text-decoration: none;">
 					<button class="btn btn-primary btn-block" type="submit" style="margin-top:50px;">Start Signup</button>
 				</a>
 				<script>

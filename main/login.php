@@ -34,7 +34,7 @@
 		<div class="col-md-6">
 			<h2>Login</h2>
 			<div class="form-group">
-				Do not have account now? <a href="signup.html">Signup</a>
+				Do not have account now? <a href="signup.php">Signup</a>
 			</div>
 			<form action="">
 				<div class="form-group">
@@ -50,7 +50,7 @@
 					<button class="btn btn-primary btn-block" type="submit">LOGIN</button>
 				</div>
 				<div class="form-group">
-					<a href="">Forget password?</a>
+					<a href="forgetPW.php">Forget password?</a>
 				</div>
 			</form>
 		</div>
