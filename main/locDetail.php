@@ -15,13 +15,13 @@
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="index.html" class="navbar-brand"></a>
+				<a href="home.php" class="navbar-brand"></a>
 			</div>
 			<label id="toggle-label" class="visible-xs-inline-block" for="toggle-checkbox">Menu</label>
 			<input id="toggle-checkbox" type="checkbox" class="hidden">
 			<div class="hidden-xs">
 				<ul class="nav navbar-nav">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="home.php">Home</a></li>
 					<li class="active"><a href="location.php">Location</a></li>
 					<li><a href="car.php">Car</a></li>
 				</ul>

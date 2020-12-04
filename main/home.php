@@ -23,10 +23,19 @@
 					<li><a href="location.php">Location</a></li>
 					<li><a href="car.php">Car</a></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="login.php">Login</a></li>
-					<li><a href="signup.php">Signup</a></li>
-				</ul>
+				<?php if (true): ?>
+					<ul class="nav navbar-nav navbar-right">
+						<li><div style="margin-top: 15px; color: #AAAA55;">Welcome! XXX</div></li>
+					    <li><a href="logout.php">Logout</a></li>
+					</ul>	
+				<?php endif ?>
+				<?php if (false): ?>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="login.php">Login</a></li>
+						<li><a href="signup.php">Signup</a></li>
+					</ul>
+				<?php endif ?>
+				
 			</div>
 		</div>
 	</div>
@@ -67,7 +76,8 @@
 	</script>
 	<div class="container">
 		<div class="col-md-1"></div>
-		<div class="col-md-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.</div>
+		<div class="col-md-10">
+		This is Home page: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.</div>
 		<div class="col-md-1"></div>
 	</div>
 	<div class="footer">
