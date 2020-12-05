@@ -34,7 +34,7 @@
 					<?php if ($user_type == 'CUSTOMER'): ?>
 						<li><a href="custProfile.php">Customer</a></li>
 					<?php endif ?>
-					<?php if ($user_type == 'EMPLOYEE'): ?>
+					<?php if ($user_type == 'EMPLOYEE' || $user_type == 'ADMIN'): ?>
 						<li><a href="empRent.php">Employee</a></li>
 					<?php endif ?>
 				</ul>

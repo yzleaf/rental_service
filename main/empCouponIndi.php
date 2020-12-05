@@ -1,3 +1,9 @@
+<?php
+	require_once ('./php_operation/common.php');
+	$user_name = getCookieVal('cookie_uname');
+	$user_type = getCookieVal('cookie_utype');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +43,9 @@
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
 				<a href="empCoupon.php" class="list-group-item active">Coupon Message</a>
+				<?php if ($user_type == 'ADMIN'): ?>
+					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
+				<?php endif ?>
 			</div>
 		</div>
 		<div class="col-md-10">
