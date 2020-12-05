@@ -1,6 +1,10 @@
 <?php
 	include ('./php_operation/signup_check.php');
+	require_once ('./php_operation/common.php');
+	$user_name = getCookieVal('cookie_uname');
+	$user_type = getCookieVal('cookie_utype');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
