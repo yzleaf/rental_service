@@ -25,5 +25,13 @@
 		}
 	}
 
+	function loc_car_info($conn, $loc_name) {
+		$check = mysqli_query($conn, "SELECT a.vin, a.make, a.model, a.year, a.lpn, b.class_name, a.location_id
+			                          FROM vehicle a JOIN class b ON a.class_id=b.class_id 
+			                                         JOIN location c ON a.location_id=c.location_id
+			                          WHERE c.loc_state='$loc_name'");
+		return $check;
+	}
+
 ?>
 

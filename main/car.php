@@ -66,8 +66,8 @@
 					<span class="input-group-addon">Make</span>
 						<select class="form-control" name="make">
 							<option value="All">All</option>
-							<option value="M1">Make 1</option>
-							<option value="M2">Make 2</option>
+							<option value="M1">Benz</option>
+							<option value="M2">BMW</option>
 							<option value="M3">Make 3</option>
 					</select>
 				</div>
@@ -77,8 +77,8 @@
 					<span class="input-group-addon">Class</span>
 						<select class="form-control" name="class">
 							<option value="All">All</option>
-							<option value="C1">Class 1</option>
-							<option value="C2">Class 2</option>
+							<option value="C1">small car</option>
+							<option value="C2">mid-size car</option>
 							<option value="C3">Class 3</option>
 					</select>
 				</div>
@@ -88,8 +88,8 @@
 					<span class="input-group-addon">Year</span>
 						<select class="form-control" name="year">
 							<option value="All">All</option>
-							<option value="Y1">Year 1</option>
-							<option value="Y2">Year 2</option>
+							<option value="Y1">after 1990</option>
+							<option value="Y2">after 2000</option>
 							<option value="Y3">Year 3</option>
 					</select>
 				</div>

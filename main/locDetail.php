@@ -9,6 +9,7 @@
 	$loc = $_POST['loc'];
     loc_state_session($loc);
     $loc_res = loc_normal_info($conn, $_SESSION['loc_state']);
+    $loc_car = loc_car_info($conn, $_SESSION['loc_state']);
 ?>
 
 <!DOCTYPE html>
@@ -110,8 +111,32 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<h3><?php echo $_SESSION['loc_state']?> car information</h3>
-			Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Accusamus praesentium, saepe odit nobis tempore totam, at commodi ea, corporis et dicta, quod? Hic veniam accusamus voluptates laudantium. Eligendi, quo, odio.
-			Lorem ipsum dolor sit amet, consectetur, adipisicing elit. Id iusto eaque alias blanditiis, maiores sed recusandae aspernatur fugit molestias doloribus sint minus provident. Consectetur, quisquam at exercitationem aspernatur vero quasi.
+			<table class="table table-striped">
+				<tr>
+					<th>VIN</th>
+					<th>Make</th>
+					<th>Model</th>
+					<th>Produce Date</th>
+					<th>Lincense Plate Number</th>
+					<th>Class</th>
+					<th>Location</th>
+				</tr>		
+				<?php 
+					while ($row = mysqli_fetch_array($loc_car)) {
+						print <<< EOF
+								<tr>
+									<td>$row[vin]</td>
+									<td>$row[make]</td>
+									<td>$row[model]</td>
+									<td>$row[year]</td>
+									<td>$row[lpn]</td>
+									<td>$row[class_name]</td>
+									<td>$row[location_id]</td>
+								</tr>
+						EOF;
+	                }
+				?>	
+			</table>
 		</div>
 		<div class="col-md-1"></div>	
 	</div>
