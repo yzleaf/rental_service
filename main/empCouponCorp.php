@@ -25,14 +25,32 @@
 			<input id="toggle-checkbox" type="checkbox" class="hidden">
 			<div class="hidden-xs">
 				<ul class="nav navbar-nav">
-					<li><a href="home.php">Home</a></li>
+					<li class="active"><a href="home.php">Home</a></li>
 					<li><a href="location.php">Location</a></li>
 					<li><a href="car.php">Car</a></li>
+					<?php if (empty($user_name)): ?>
+						<li></li>
+					<?php endif ?>
+					<?php if ($user_type == 'CUSTOMER'): ?>
+						<li><a href="custProfile.php">Customer</a></li>
+					<?php endif ?>
+					<?php if ($user_type == 'EMPLOYEE' || $user_type == 'ADMIN'): ?>
+						<li><a href="empRent.php">Employee</a></li>
+					<?php endif ?>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><div style="margin-top: 15px; color: #AAAA55;">Welcome! XXX</div></li>
-					<li><a href="#">Signout</a></li>
-				</ul>
+				<?php if (!empty($user_name)): ?>
+					<ul class="nav navbar-nav navbar-right">
+						<li><div style="margin-top: 15px; color: #AAAA55;">Welcome! <?php echo $user_name; ?></div></li>
+					    <li><a href="logout.php">Logout</a></li>
+					</ul>	
+				<?php endif ?>
+				<?php if (empty($user_name)): ?>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="login.php">Login</a></li>
+						<li><a href="signup.php">Signup</a></li>
+					</ul>
+				<?php endif ?>
+				
 			</div>
 		</div>
 	</div>

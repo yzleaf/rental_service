@@ -9,10 +9,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>signup</title>
+	<title>login</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/main.css">
-    <script type="text/javascript" src="js/logSignCheck.js"></script>
+	<link rel="stylesheet" href="css/sideBar.css">
 </head>
 <body>
 	<div class="navbar navbar-default">
@@ -53,44 +53,33 @@
 			</div>
 		</div>
 	</div>
-	<div class="container container-small">
-		<div class="col-md-3"></div>
-		<div class="col-md-6">
-			<h2>Signup</h2>
-			<h3 style="text-align:center; color:#777;">please select your customer type : </h3>
-			<form action="">
-				<div class="form-group">
-					<div class="cust-options">
-						<div class="col-md-6"><input type="radio" name="options" checked> individual</div>
-						<div class="col-md-6"><input type="radio" name="options"> corporate</div>   
-				    </div>
-			    </div>
-			</form>
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
-				<a id="link" onclick="checkOptions();" style="text-decoration: none;">
-					<button class="btn btn-primary btn-block" type="submit" style="margin-top:50px;">Start Signup</button>
-				</a>
-				<script>
-					function checkOptions() {
-					  var radio = document.getElementsByName("options");
-					  var a = document.getElementById("link");
-					  console.log(radio);
-					  if (radio[0].checked==true && radio[1].checked==false) {
-					    a.href = "signupIndi.php";
-					  } 
-					  else if (radio[0].checked==false && radio[1].checked==true) {
-					    a.href = "signupCorp.php";
-					  }
-					}
-				</script>	
+	<div class="container">
+		<div class="col-md-2">
+			<div class="list-group side-bar">
+				<a href="empRent.php" class="list-group-item">Rent</a>
+				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
+				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
+				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
+				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
+				<?php if ($user_type == 'ADMIN'): ?>
+					<a href="adminEmp.php" class="list-group-item active">Employee Message</a>
+				<?php endif ?>
 			</div>
-			<div class="col-md-3"></div>
 		</div>
-		<div class="col-md-3"></div>	
+		<div class="col-md-10">
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-md-4"></div>
+				<a href="addEmp.php"><button class="col-md-4 btn btn-primary">Add Employee</button></a>
+			</div>
+			<div>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore reiciendis, nesciunt consectetur quaerat consequuntur, eligendi rerum autem nostrum veniam, ab, suscipit voluptas voluptatum delectus quos facere similique velit! Distinctio, fugiat?
+				Lorem ipsum dolor sit amet consectetur adipisicing, elit. Natus quia soluta sed repellendus et. Eos saepe illo, veniam unde laborum. Quibusdam recusandae porro placeat nisi commodi nulla nobis repellat mollitia.
+				Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Nostrum, dignissimos. Veniam consequatur facere suscipit quaerat vitae tenetur officia fugiat excepturi optio iusto, provident voluptas rem. Earum dicta fuga doloremque voluptates.
+			</div>
+			
+		</div>
 	</div>
 	<div class="footer">
 		WOW | qwert@wow.com | 358-224-6785
 	</div>
 </body>
-</html>
