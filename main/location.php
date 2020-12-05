@@ -25,8 +25,8 @@
 			<input id="toggle-checkbox" type="checkbox" class="hidden">
 			<div class="hidden-xs">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="home.php">Home</a></li>
-					<li><a href="location.php">Location</a></li>
+					<li><a href="home.php">Home</a></li>
+					<li class="active"><a href="location.php">Location</a></li>
 					<li><a href="car.php">Car</a></li>
 					<?php if (empty($user_name)): ?>
 						<li></li>

@@ -24,14 +24,14 @@
 			<input id="toggle-checkbox" type="checkbox" class="hidden">
 			<div class="hidden-xs">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="home.php">Home</a></li>
+					<li><a href="home.php">Home</a></li>
 					<li><a href="location.php">Location</a></li>
 					<li><a href="car.php">Car</a></li>
 					<?php if (empty($user_name)): ?>
 						<li></li>
 					<?php endif ?>
 					<?php if ($user_type == 'CUSTOMER'): ?>
-						<li><a href="custProfile.php">Customer</a></li>
+						<li class="active"><a href="custProfile.php">Customer</a></li>
 					<?php endif ?>
 					<?php if ($user_type == 'EMPLOYEE' || $user_type == 'ADMIN'): ?>
 						<li><a href="empRent.php">Employee</a></li>
