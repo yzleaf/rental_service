@@ -12,14 +12,16 @@ function getCookieVal($cookie_name) { // $key is the information(id/type) of use
 }
 
 
-function login($name, $type) {
+function login($name, $utype, $ctype) {
     setcookie ( 'cookie_uname', $name);
-    setcookie ( 'cookie_utype', $type);
+    setcookie ( 'cookie_utype', $utype);
+    setcookie ( 'cookie_ctype', $ctype);
 }
 
 function logout() {
     setcookie ( 'cookie_uname', "");
     setcookie ( 'cookie_utype', "");
+    setcookie ( 'cookie_ctype', "");
 }
 
 ?>

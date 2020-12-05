@@ -1,7 +1,18 @@
 <?php
+	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/customer.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
+	$customer_type = getCookieVal('cookie_ctype');
+	if ($customer_type == 'I') { // individual
+		$cust_res = select_individual($conn, $user_name);
+	}
+	else { // corporation
+		$cust_res = select_corp($conn, $user_name);
+	}
+	
+
 ?>
 
 <!DOCTYPE html>
@@ -63,13 +74,67 @@
 		<div class="col-md-10">
 			<div class="row" style="margin-bottom: 20px;">
 				<div class="col-md-4"></div>
-				<a href="#"><button class="col-md-4 btn btn-primary">Change Profile</button></a>
+				<a <?php if ($customer_type == 'I'): ?>href="custIndiChange.php"<?php endif ?> 
+				   <?php if ($customer_type == 'C'): ?>href="custCorpChange.php"<?php endif ?> 
+				>
+					<button class="col-md-4 btn btn-primary">Change Profile</button>
+				</a>
 			</div>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
+			<table class="table table-striped">
+			<tr>
+				<th>Type</th><td><?php echo $cust_res['cust_type'] ?></td>
+			</tr>
+			<tr>	
+				<th>Email</th><td><?php echo $cust_res['email'] ?></td>
+			</tr>
+			<tr>
+				<th>First Name</th><td><?php echo $cust_res['fname'] ?></td>
+			</tr>
+			<tr>
+				<th>Last Name</th><td><?php echo $cust_res['lname'] ?></td>
+			</tr>
+			<tr>	
+				<th>Phone Number</th><td><?php echo $cust_res['cust_phone_no'] ?></td>
+			</tr>
+			<tr>
+				<th>Street</th><td><?php echo $cust_res['cust_street'] ?></td>
+			</tr>
+			<tr>
+				<th>City</th><td><?php echo $cust_res['cust_city'] ?></td>
+			</tr>
+			<tr>
+				<th>State</th><td><?php echo $cust_res['cust_state'] ?></td>
+			</tr>
+			<tr>
+				<th>Zipcode</th><td><?php echo $cust_res['cust_zipcode'] ?></td>
+			</tr>
+			
+			<?php if ($customer_type == 'I'): ?>	
+			<tr>
+				<th>Driver Licence Number</th><td><?php echo $cust_res['driver_lno'] ?></td>
+			</tr>
+			<tr>
+				<th>Insurance Company</th><td><?php echo $cust_res['insur_cop_name'] ?></td>
+			</tr>
+			<tr>
+				<th>Insurance Policy Number</th><td><?php echo $cust_res['insur_pol_no'] ?></td>		
+			<?php endif ?>
+			<?php if ($customer_type == 'C'): ?>	
+			<tr>
+				<th>Employee Id</th><td><?php echo $cust_res['emp_id'] ?></td>
+			</tr>
+			<tr>
+				<th>Corporation Register Number</th><td><?php echo $cust_res['corp_reg_no'] ?></td>
+			</tr>
+			<tr>
+				<th>Corporation Name</th><td><?php echo $cust_res['corp_name'] ?></td>		
+			<?php endif ?>
+				
+
+
+			</tr>
+			</table>
+
 		</div>
 	</div>
 	<div class="footer">

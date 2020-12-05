@@ -3,6 +3,9 @@
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 ?>
+<?php 
+	$loc = $_POST['loc'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,12 +60,12 @@
 		</div>
 	</div>
 	<div class="row">
-		<h2>Loc 1 information in detail</h2>
+		<h2><?php echo $loc?> information in detail</h2>
 	</div>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10 loc_info_total clearfix">
-			<h3>loc 1 office information</h3>
+			<h3><?php echo $loc?> office information</h3>
 			<div class="col-sm-4" style="padding: 0;">
 				<img class="loc_img" src="https://dummyimage.com/300x200/e000e0/fff">
 			</div>
@@ -77,7 +80,7 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
-			<h3>loc 1 car information</h3>
+			<h3><?php echo $loc?> car information</h3>
 			Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Accusamus praesentium, saepe odit nobis tempore totam, at commodi ea, corporis et dicta, quod? Hic veniam accusamus voluptates laudantium. Eligendi, quo, odio.
 			Lorem ipsum dolor sit amet, consectetur, adipisicing elit. Id iusto eaque alias blanditiis, maiores sed recusandae aspernatur fugit molestias doloribus sint minus provident. Consectetur, quisquam at exercitationem aspernatur vero quasi.
 		</div>

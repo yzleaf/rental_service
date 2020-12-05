@@ -20,7 +20,9 @@ $password = md5($password); // encript
 // ---------test end
 
 
-$check_query = mysqli_query($conn, "SELECT u_id, u_type FROM user_password WHERE username='$username' and password='$password' limit 0, 1");
+$check_query = mysqli_query($conn, "SELECT a.u_id, a.u_type, b.cust_type FROM user_password a
+                                    JOIN customer b ON a.u_id=b.cust_id
+                                    WHERE a.username='$username' AND a.password='$password' limit 0, 1");
 $result = mysqli_fetch_array($check_query);
 
 if ($result) {
@@ -29,9 +31,7 @@ if ($result) {
     $login_res = 'T';
 
     // set cookie to remember status of user
-    // setcookie('cookie_uname',$username);
-    // setcookie('cookie_utpye',$result['u_type']);
-    login($username, $result['u_type']);
+    login($username, $result['u_type'], $result['cust_type']);
 }
 else {
     // echo 'Fail Log In! Error user name or password',mysqli_error($conn),'<br />';
