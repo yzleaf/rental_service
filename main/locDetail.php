@@ -1,10 +1,14 @@
 <?php
+    include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/location_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 ?>
 <?php 
 	$loc = $_POST['loc'];
+    loc_state_session($loc);
+    $loc_res = loc_normal_info($conn, $_SESSION['loc_state']);
 ?>
 
 <!DOCTYPE html>
@@ -60,18 +64,43 @@
 		</div>
 	</div>
 	<div class="row">
-		<h2><?php echo $loc?> information in detail</h2>
+		<h2><?php echo $_SESSION['loc_state']?> information in detail</h2>
 	</div>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10 loc_info_total clearfix">
-			<h3><?php echo $loc?> office information</h3>
+			<h3><?php echo $_SESSION['loc_state']?> office information</h3>
 			<div class="col-sm-4" style="padding: 0;">
 				<img class="loc_img" src="https://dummyimage.com/300x200/e000e0/fff">
 			</div>
 			<div class="col-sm-8">
 				<div class="info">
-					Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Numquam sapiente rem non assumenda est omnis, aliquid, impedit, ipsum inventore exercitationem sint consequatur suscipit, praesentium dolores accusantium ipsam necessitatibus quia maxime.
+					<table class="table table-striped">
+						<tr>
+							<th>Location ID</th>
+							<th>Street</th>
+							<th>City</th>
+							<th>State</th>
+							<th>Zip Code</th>
+							<th>Phone Number</th>
+						</tr>		
+						<?php 
+							while ($row = mysqli_fetch_array($loc_res)) {
+								//print_r($row);
+								//print($row['location_id']);
+								print <<< EOF
+										<tr>
+											<td>$row[location_id]</td>
+											<td>$row[loc_street]</td>
+											<td>$row[loc_city]</td>
+											<td>$row[loc_state]</td>
+											<td>$row[loc_zipcode]</td>
+											<td>$row[loc_phone_no]</td>
+										</tr>
+								EOF;
+			                }
+						?>	
+					</table>
 				</div>
 			</div>
 		</div>
@@ -80,7 +109,7 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
-			<h3><?php echo $loc?> car information</h3>
+			<h3><?php echo $_SESSION['loc_state']?> car information</h3>
 			Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Accusamus praesentium, saepe odit nobis tempore totam, at commodi ea, corporis et dicta, quod? Hic veniam accusamus voluptates laudantium. Eligendi, quo, odio.
 			Lorem ipsum dolor sit amet, consectetur, adipisicing elit. Id iusto eaque alias blanditiis, maiores sed recusandae aspernatur fugit molestias doloribus sint minus provident. Consectetur, quisquam at exercitationem aspernatur vero quasi.
 		</div>
