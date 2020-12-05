@@ -61,14 +61,15 @@
 			</div>
 		</div>
 		<div class="col-md-10">
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
-			<div class="col-md-offset-10" style="margin-top: 20px;">
-				<button class="btn btn-primary btn-block" type="submit">Change Information</button>
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-md-4"></div>
+				<a href="#"><button class="col-md-4 btn btn-primary">Change Profile</button></a>
 			</div>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
 		</div>
 	</div>
 	<div class="footer">
