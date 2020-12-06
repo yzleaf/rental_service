@@ -1,4 +1,5 @@
 <?php
+    include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
@@ -65,10 +66,10 @@
 				<div class="input-group">
 					<span class="input-group-addon">Make</span>
 						<select class="form-control" name="make">
-							<option value="All">All</option>
-							<option value="M1">Benz</option>
-							<option value="M2">BMW</option>
-							<option value="M3">Make 3</option>
+							<option value=" IS NOT NULL">All</option>
+							<option value="='Benz'">Benz</option>
+							<option value="='BMW'">BMW</option>
+							<option value="='Audi'">Audi</option>
 					</select>
 				</div>
 			</div>
@@ -76,21 +77,21 @@
 				<div class="input-group">
 					<span class="input-group-addon">Class</span>
 						<select class="form-control" name="class">
-							<option value="All">All</option>
-							<option value="C1">small car</option>
-							<option value="C2">mid-size car</option>
-							<option value="C3">Class 3</option>
+							<option value=" IS NOT NULL">All</option>
+							<option value="='small car'">small car</option>
+							<option value="='mid-size car'">mid-size car</option>
+							<option value="='SUV'">SUV</option>
 					</select>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="input-group">
-					<span class="input-group-addon">Year</span>
-						<select class="form-control" name="year">
-							<option value="All">All</option>
-							<option value="Y1">after 1990</option>
-							<option value="Y2">after 2000</option>
-							<option value="Y3">Year 3</option>
+					<span class="input-group-addon">Location</span>
+						<select class="form-control" name="location">
+							<option value=" IS NOT NULL">All</option>
+							<option value="='New York'">New York</option>
+							<option value="='Pennsylvania'">Pennsylvania</option>
+							<option value="='Massachusetts'">Massachusetts</option>
 					</select>
 				</div>
 			</div>
@@ -102,12 +103,40 @@
 			</form>
 		</div>
 		<div class="row">
-			<!-- CAR: 
-		    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt ipsa neque voluptas beatae quidem iusto, assumenda facilis excepturi ullam obcaecati laborum error iste sed culpa quos hic accusamus quod, deleniti.
-		    Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Eligendi saepe odit vel eveniet qui fugiat dicta nostrum atque dolorem ab minima tempore, libero cupiditate totam voluptatem, ad tempora recusandae quam. -->
 			<?php
 				include('./php_operation/car_display.php');
 			?>
+			<table class="table table-striped" style="margin-top: 30px;">
+				<tr>
+					<th>VIN</th>
+					<th>Make</th>
+					<th>Model</th>
+					<th>Produce Date</th>
+					<th>Lincense Plate Number</th>
+					<th>Class</th>
+					<th>Rental Rate</th>
+					<th>Over fee</th>
+					<th>Location</th>
+				</tr>
+				<?php 
+					while ($row = mysqli_fetch_array($filter_result)) {
+						print <<< EOF
+								<tr>
+									<td>$row[vin]</td>
+									<td>$row[make]</td>
+									<td>$row[model]</td>
+									<td>$row[year]</td>
+									<td>$row[lpn]</td>
+									<td>$row[class_name]</td>
+									<td>$row[rental_rate]</td>
+									<td>$row[over_fee]</td>
+									<td>$row[location_id]</td>
+								</tr>
+						EOF;
+	                }
+				?>	
+			</table>
+
 		</div>
 	</div>
 	<div class="footer">
