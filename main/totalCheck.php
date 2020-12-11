@@ -2,6 +2,7 @@
 	require_once ('./php_operation/common.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
+	$flag_exe = get_session_value('session_flag');
 ?>
 
 <!DOCTYPE html>
@@ -55,13 +56,13 @@
 	<div class="container container-small">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-		<?php if (false): ?>
+		<?php if ($flag_exe == 'T'): ?>
 			<div class="alert alert-success" role="alert">
 				<h3>Success!</h3>
 				Click <a href="home.php" class="alert-link">here</a> to go to the Home Page
 			</div>
 		<?php endif ?>
-		<?php if (true): ?>
+		<?php if ($flag_exe == 'F'): ?>
 			<div class="alert alert-danger" role="alert">
 				<h3>Fail!</h3>
 				Click <a href="javascript:history.go(-1);" class="alert-link">here</a> to go back

@@ -61,7 +61,7 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<h2>Change Information</h2>
-			<form action="#" method="post">
+			<form action="./php_operation/cust_change_check.php" method="post">
 				<div class="form-group">
 					<label for="" style="font-size:150%; color:#AAAA55;">Individual Customer</label>
 					<input class="hidden" name="cust_type" value="I">

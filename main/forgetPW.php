@@ -57,16 +57,16 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<h2>Reset Password</h2>
-			<form action="">
+			<form action="./php_operation/forgetPW_check.php" method="post">
 				<div class="form-group">
 					<label for="">email</label>
-					<input type="text" class="form-control" id="email" onblur="checkMail('email'); checkNull('email','email');">
+					<input type="text" class="form-control" id="email" name="email" onblur="checkMail('email'); checkNull('email','email');">
 					<p id="mess_email" class="mess-check"></p>
 				</div>
 				<div class="form-group">
 					<label for="">verification code</label>
 					<div class="input-group">
-						<input type="text" class="form-control" id="code" onblur="checkNull('code','code');">
+						<input type="text" class="form-control" id="code" name="code" onblur="checkNull('code','code');">
 						<div class="input-group-btn">
 							<div class="btn btn-default">get code</div>
 						</div>
@@ -74,10 +74,10 @@
 				</div>
 				<div class="form-group">
 					<label for="">new password</label>
-					<input type="password" class="form-control" id="password" onblur="checkNull('password','password');">
+					<input type="password" class="form-control" id="password" name="password" onblur="checkNull('password','password');">
 				</div>
 				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+					<button class="btn btn-primary btn-block" type="submit" name="submit">Reset Password</button>
 				</div>
 			</form>
 		</div>

@@ -19,19 +19,24 @@ $password = md5($password); // encript
 
 // ---------test end
 
+$check_query_u_p = mysqli_query($conn, "SELECT u_id, u_type FROM user_password 
+                                    WHERE username='$username' AND password='$password' limit 0, 1");
+$result_u_p = mysqli_fetch_array($check_query_u_p);
 
-$check_query = mysqli_query($conn, "SELECT a.u_id, a.u_type, b.cust_type FROM user_password a
-                                    JOIN customer b ON a.u_id=b.cust_id
-                                    WHERE a.username='$username' AND a.password='$password' limit 0, 1");
-$result = mysqli_fetch_array($check_query);
-
-if ($result) {
-    // echo "Success Log In <br>";
-    // exit();
+if ($result_u_p) {
+    
     $login_res = 'T';
 
-    // set cookie to remember status of user
-    login($username, $result['u_type'], $result['cust_type']);
+    // find customer type: I or C
+    $check_query_c = mysqli_query($conn, "SELECT cust_type FROM customer WHERE email='$username' limit 0, 1");
+    $result_c = mysqli_fetch_array($check_query_c);
+    if ($result_c) { // customer     
+        login($username, $result_u_p['u_type'], $result_c['cust_type']);
+    }
+    else { // employee
+        login($username, $result_u_p['u_type'], "");
+    }
+
 }
 else {
     // echo 'Fail Log In! Error user name or password',mysqli_error($conn),'<br />';

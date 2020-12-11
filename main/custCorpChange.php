@@ -61,7 +61,7 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<h2>Change Information</h2>
-			<form action="#" method="post">
+			<form action="./php_operation/cust_change_check.php" method="post">
 				<div class="form-group">
 					<label for="" style="font-size:150%; color:#AAAA55;">Corporate Customer</label>
 					<input class="hidden" name="cust_type" value="C">
@@ -111,15 +111,15 @@
 				</div>
 				<div class="form-group">
 					<label for="">employee id</label>
-					<input type="text" class="form-control" id="dln" name="emp_id" onblur="checkNull('dln','dln');" value="<?php echo $cust_res['emp_id']?>">
+					<input type="text" class="form-control" id="dln" name="dln" onblur="checkNull('dln','dln');" value="<?php echo $cust_res['emp_id']?>">
 				</div>
 				<div class="form-group">
 					<label for="">corporate registration number</label>
-					<input type="text" class="form-control" id="iname" name="corp_num" onblur="checkNull('iname','iname');" value="<?php echo $cust_res['corp_reg_no']?>">
+					<input type="text" class="form-control" id="iname" name="iname" onblur="checkNull('iname','iname');" value="<?php echo $cust_res['corp_reg_no']?>">
 				</div>
 				<div class="form-group">
 					<label for="">corporation name</label>
-					<input type="text" class="form-control" id="inum" name="corp_name" onblur="checkNull('inum','inum');" value="<?php echo $cust_res['corp_name']?>">
+					<input type="text" class="form-control" id="inum" name="inum" onblur="checkNull('inum','inum');" value="<?php echo $cust_res['corp_name']?>">
 				</div>
 				<div class="form-group">
 					<button class="btn btn-primary btn-block" type="submit" name="submit">Finish</button>
