@@ -74,57 +74,57 @@
 				<div class="form-group">
 					<div class="col-md-6">
 						<label for="">first name</label>
-						<input type="text" class="form-control" id="first-name" name="first-name" onblur="checkNull('first-name','first-name');" value="<?php echo $cust_res['fname'] ?>">
+						<input type="text" class="form-control" id="first-name" name="first-name" onblur="checkNull('first-name','first-name');" value="<?php echo $cust_res['fname'] ?>" required=required>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-6">
 						<label for="">last name</label>
-						<input type="text" class="form-control" id="last-name" name="last-name" onblur="checkNull('last-name','last-name');" value="<?php echo $cust_res['lname'] ?>">
+						<input type="text" class="form-control" id="last-name" name="last-name" onblur="checkNull('last-name','last-name');" value="<?php echo $cust_res['lname'] ?>" required=required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="">email address</label>
-					<input readonly="readonly" type="text" class="form-control" id="email" name="email" onblur="checkMail('email'); checkNull('email','email');" value="<?php echo $cust_res['email'] ?>">
+					<input readonly="readonly" type="text" class="form-control" id="email" name="email" onblur="checkMail('email'); checkNull('email','email');" value="<?php echo $cust_res['email'] ?>" required=required>
 					<p id="mess_email" class="mess-check"></p>
 				</div>
 				<div class="form-group">
 					<label for="">phone number</label>
-					<input type="text" class="form-control" id="phone" name="phone" onblur="checkPhone('phone'); checkNull('phone','phone');" value="<?php echo $cust_res['cust_phone_no'] ?>">
+					<input type="text" class="form-control" id="phone" name="phone" onblur="checkPhone('phone'); checkNull('phone','phone');" value="<?php echo $cust_res['cust_phone_no'] ?>" required=required>
 					<p id="mess_phone" class="mess-check"></p>
 				</div>
 				<div class="form-group">
 					<label for="">password</label>
-					<input type="password" class="form-control" id="password" name="password" onblur="checkNull('password','password');">
+					<input type="password" class="form-control" id="password" name="password" onblur="checkNull('password','password');" required=required>
 				</div>
 			    <div class="form-group">
 					<label for="">street</label>
-					<input type="text" class="form-control" id="street" name="street" onblur="checkNull('street','street');" value="<?php echo $cust_res['cust_street'] ?>">
+					<input type="text" class="form-control" id="street" name="street" onblur="checkNull('street','street');" value="<?php echo $cust_res['cust_street'] ?>" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">city</label>
-					<input type="text" class="form-control" id="city" name="city" onblur="checkNull('city','city');" value="<?php echo $cust_res['cust_city']?>">
+					<input type="text" class="form-control" id="city" name="city" onblur="checkNull('city','city');" value="<?php echo $cust_res['cust_city']?>" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">state</label>
-					<input type="text" class="form-control" id="state" name="state" onblur="checkNull('state','state');" value=<?php echo $cust_res['cust_state']?>>
+					<input type="text" class="form-control" id="state" name="state" onblur="checkNull('state','state');" value=<?php echo $cust_res['cust_state']?> required=required>
 				</div>
 				<div class="form-group">
 					<label for="">zip code</label>
-					<input type="text" class="form-control" id="zip-code" name="zip-code" onblur="checkZipCode('zip-code'); checkNull('zip-code','zip-code');" value="<?php echo $cust_res['cust_zipcode']?>">
+					<input type="text" class="form-control" id="zip-code" name="zip-code" onblur="checkZipCode('zip-code'); checkNull('zip-code','zip-code');" value="<?php echo $cust_res['cust_zipcode']?>" required=required>
 					<p id="mess_zip" class="mess-check"></p>
 				</div>
 				<div class="form-group">
 					<label for="">driver license number</label>
-					<input type="text" class="form-control" id="dln" name="dln" onblur="checkNull('dln','dln');" value="<?php echo $cust_res['driver_lno']?>">
+					<input type="text" class="form-control" id="dln" name="dln" onblur="checkNull('dln','dln');" value="<?php echo $cust_res['driver_lno']?>" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">insurance company name</label>
-					<input type="text" class="form-control" id="iname" name="iname" onblur="checkNull('iname','iname');" value="<?php echo $cust_res['insur_cop_name']?>">
+					<input type="text" class="form-control" id="iname" name="iname" onblur="checkNull('iname','iname');" value="<?php echo $cust_res['insur_cop_name']?>" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">insurance policy number</label>
-					<input type="text" class="form-control" id="inum" name="inum" onblur="checkNull('inum','inum');" value="<?php echo $cust_res['insur_pol_no']?>">
+					<input type="text" class="form-control" id="inum" name="inum" onblur="checkNull('inum','inum');" value="<?php echo $cust_res['insur_pol_no']?>" required=required>
 				</div>
 				<div class="form-group">
 					<button class="btn btn-primary btn-block" type="submit" name="submit">Finish</button>

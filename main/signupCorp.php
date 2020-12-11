@@ -90,32 +90,32 @@
 				</div>
 			    <div class="form-group">
 					<label for="">street</label>
-					<input type="text" class="form-control" id="street" name="street" onblur="checkNull('street','street');">
+					<input type="text" class="form-control" id="street" name="street" onblur="checkNull('street','street');" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">city</label>
-					<input type="text" class="form-control" id="city" name="city" onblur="checkNull('city','city');">
+					<input type="text" class="form-control" id="city" name="city" onblur="checkNull('city','city');" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">state</label>
-					<input type="text" class="form-control" id="state" name="state" onblur="checkNull('state','state');">
+					<input type="text" class="form-control" id="state" name="state" onblur="checkNull('state','state');" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">zip code</label>
-					<input type="text" class="form-control" id="zip-code" name="zip-code" onblur="checkZipCode('zip-code'); checkNull('zip-code','zip-code');">
+					<input type="text" class="form-control" id="zip-code" name="zip-code" onblur="checkZipCode('zip-code'); checkNull('zip-code','zip-code');" required=required>
 					<p id="mess_zip" class="mess-check"></p>
 				</div>
 				<div class="form-group">
 					<label for="">employee id</label>
-					<input type="text" class="form-control" id="dln" name="emp_id" onblur="checkNull('dln','dln');">
+					<input type="text" class="form-control" id="dln" name="emp_id" onblur="checkNull('dln','dln');" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">corporate registration number</label>
-					<input type="text" class="form-control" id="iname" name="corp_num" onblur="checkNull('iname','iname');">
+					<input type="text" class="form-control" id="iname" name="corp_num" onblur="checkNull('iname','iname');" required=required>
 				</div>
 				<div class="form-group">
 					<label for="">corporation name</label>
-					<input type="text" class="form-control" id="inum" name="corp_name" onblur="checkNull('inum','inum');">
+					<input type="text" class="form-control" id="inum" name="corp_name" onblur="checkNull('inum','inum');" required=required>
 				</div>
 				<div class="form-group">
 					<button class="btn btn-primary btn-block" type="submit" name="submit">SIGNUP</button>
