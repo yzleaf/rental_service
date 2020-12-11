@@ -47,4 +47,22 @@ function clear_flag_execute() {
     unset($_SESSION['session_flag']);
 }
 
+function set_cust_name($name) {
+    session_start();
+    $_SESSION['cust_name'] = $name;
+}
+
+function get_cust_name($addr) {
+    session_start();
+    return $_SESSION[$addr];
+}
+
+
+
+
+
+
+
+
+
 ?>

@@ -1,8 +1,25 @@
 <?php
+	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/customer.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
-	include ('./php_operation/conn.php');
+	$customer_type = getCookieVal('cookie_ctype');
+	if (!isset($_POST['editEmail'])) { // whether click the button
+    	$cust_name = get_cust_name('cust_name');
+	} else {
+		$cust_name = $_POST['editEmail'];
+		set_cust_name($cust_name);
+	}
+	$cust_type = select_cust_type($conn, $cust_name)['cust_type'];
+	if ($cust_type == 'I') { // individual
+		$cust_res = select_individual($conn, $cust_name);
+	}
+	else { // corporation
+		$cust_res = select_corp($conn, $cust_name);
+	}
+	
+
 ?>
 
 <!DOCTYPE html>
@@ -69,51 +86,69 @@
 		</div>
 		<div class="col-md-10">
 			<div class="row" style="margin-bottom: 20px;">
-				<a href="empCustInfo.php"><button class="col-md-4 btn btn-primary active">All</button></a>
-				<a href="empCustIndi.php"><button class="col-md-4 btn btn-primary">Individual Customer</button></a>
-				<a href="empCustCorp.php"><button class="col-md-4 btn btn-primary">Corporate Customer</button></a>
-			</div>
-			<div>
-				<div class="row" style="margin-bottom: 20px;">
 				<div class="col-md-4"></div>
-					<a href="signup.php">
-						<button class="col-md-4 btn btn-primary">Add Customer</button>
-					</a>	
+				<a <?php if ($cust_type == 'I'): ?>href="custIndiChange.php"<?php endif ?> 
+				   <?php if ($cust_type == 'C'): ?>href="custCorpChange.php"<?php endif ?> 
+				>
+					<button class="col-md-4 btn btn-primary">
+					Change Profile</button>
 				</a>
 			</div>
-			<div class="row" style="margin-bottom: 20px;">
-				<?php include('./php_operation/empCustSql.php') ?>
-				<table class="table table-striped" style="margin-top: 30px;">
-					<tr>
-						<th>Email</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Customer Type</th>
-						<th></th>
-						<th></th>
-					</tr>
-					<?php 
-						$allCust = allCust($conn);
-						while ($row = mysqli_fetch_array($allCust)) {
-							print <<< EOF
-									<tr>
-										<td>$row[email]</td>
-										<td>$row[fname]</td>
-										<td>$row[lname]</td>
-										<td>$row[cust_type]</td>
-										<td><form action="empCustEdit.php" method="post"><button name="editEmail" 
-										       value="$row[email]" type="submit">edit</button></form></td>
-										<td><form action="empCustDelete.php" method="post"><button name="editEmail" 
-										       value="$row[email]" type="submit">delete</button></form></td>
-									</tr>
-							EOF;
-
-						}
-					?>
-				</table>
+			<table class="table table-striped">
+			<tr>
+				<th>Type</th><td><?php echo $cust_res['cust_type'] ?></td>
+			</tr>
+			<tr>	
+				<th>Email</th><td><?php echo $cust_res['email'] ?></td>
+			</tr>
+			<tr>
+				<th>First Name</th><td><?php echo $cust_res['fname'] ?></td>
+			</tr>
+			<tr>
+				<th>Last Name</th><td><?php echo $cust_res['lname'] ?></td>
+			</tr>
+			<tr>	
+				<th>Phone Number</th><td><?php echo $cust_res['cust_phone_no'] ?></td>
+			</tr>
+			<tr>
+				<th>Street</th><td><?php echo $cust_res['cust_street'] ?></td>
+			</tr>
+			<tr>
+				<th>City</th><td><?php echo $cust_res['cust_city'] ?></td>
+			</tr>
+			<tr>
+				<th>State</th><td><?php echo $cust_res['cust_state'] ?></td>
+			</tr>
+			<tr>
+				<th>Zipcode</th><td><?php echo $cust_res['cust_zipcode'] ?></td>
+			</tr>
+			
+			<?php if ($customer_type == 'I'): ?>	
+			<tr>
+				<th>Driver Licence Number</th><td><?php echo $cust_res['driver_lno'] ?></td>
+			</tr>
+			<tr>
+				<th>Insurance Company</th><td><?php echo $cust_res['insur_cop_name'] ?></td>
+			</tr>
+			<tr>
+				<th>Insurance Policy Number</th><td><?php echo $cust_res['insur_pol_no'] ?></td>		
+			<?php endif ?>
+			<?php if ($customer_type == 'C'): ?>	
+			<tr>
+				<th>Employee Id</th><td><?php echo $cust_res['emp_id'] ?></td>
+			</tr>
+			<tr>
+				<th>Corporation Register Number</th><td><?php echo $cust_res['corp_reg_no'] ?></td>
+			</tr>
+			<tr>
+				<th>Corporation Name</th><td><?php echo $cust_res['corp_name'] ?></td>		
+			<?php endif ?>
 				
-			</div>
-			</div>
+
+
+			</tr>
+			</table>
+
 		</div>
 	</div>
 	<div class="footer">

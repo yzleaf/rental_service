@@ -5,11 +5,16 @@
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	$customer_type = getCookieVal('cookie_ctype');
+	if ($user_type == 'ADMIN' || $user_type == 'EMPLOYEE') {
+	    $cust_name = get_cust_name('cust_name');
+	} else {
+	    $cust_name = getCookieVal('cookie_uname');
+	}
 	if ($customer_type == 'I') { // individual
-		$cust_res = select_individual($conn, $user_name);
+		$cust_res = select_individual($conn, $cust_name);
 	}
 	else { // corporation
-		$cust_res = select_corp($conn, $user_name);
+		$cust_res = select_corp($conn, $cust_name);
 	}
 	
 

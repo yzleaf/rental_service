@@ -36,7 +36,6 @@ if ($result_u_p) {
     else { // employee
         login($username, $result_u_p['u_type'], "");
     }
-
 }
 else {
     // echo 'Fail Log In! Error user name or password',mysqli_error($conn),'<br />';

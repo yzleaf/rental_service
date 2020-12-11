@@ -2,6 +2,20 @@
 //include ('conn.php');
 //require_once ('common.php');
 
+function select_cust_type($conn, $cust_name) {
+    $check = mysqli_query($conn, "SELECT cust_type FROM customer 
+                                  WHERE email = '$cust_name' limit 0,1");
+    $result = mysqli_fetch_array($check);
+    if ($result) {
+        return $result;
+    }
+    else {
+        return 'F';
+        exit;
+    }
+
+}
+
 function select_individual($conn, $cust_name) {
     
     $check = mysqli_query($conn, "SELECT * FROM customer a JOIN individual b ON a.cust_id=b.cust_id
@@ -190,6 +204,139 @@ function update_corp($conn, $cust_info) {
     mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
 
     return 'T';
+}
+
+function delete_indi($conn, $cust_name) {
+    mysqli_query($conn, "SET AUTOCOMMIT=0"); // not submit automatically
+    
+    // 0: get u_id to set the table of customer/individual/corporate id
+    $check = mysqli_query($conn, "SELECT u_id FROM user_password WHERE username = '$cust_name' limit 0,1");
+    $result = mysqli_fetch_array($check);
+    if ($result) {
+        $cust_id = $result['u_id'];
+    }
+    else {
+        return 'F1';
+        exit(mysqli_error($conn));
+    }
+
+    // ----- Begin -----
+    mysqli_begin_transaction($conn);
+
+    // 1: delete in user_password table
+    $sql_delete_user_pw = "DELETE 
+                           FROM user_password 
+                           WHERE u_id='$cust_id'";
+    $result = mysqli_query($conn, $sql_delete_user_pw);
+    if ($result) { // success   
+    }
+    else {
+        mysqli_query($conn, "ROLLBACK");
+        return 'F2';
+        exit(mysqli_error($conn));
+    }
+
+    // 2: delete in individual table
+    $sql_delete_individual = "DELETE 
+                              FROM individual 
+                              WHERE cust_id='$cust_id'";
+    $result = mysqli_query($conn, $sql_delete_individual);
+    if ($result) { // success 
+    }
+    else {
+        mysqli_query($conn, "ROLLBACK");
+        return 'F3';
+        exit(mysqli_error($conn));
+    }
+
+    // 3: delete in customer table
+    $sql_delete_customer = "DELETE 
+                            FROM customer
+                            WHERE cust_id='$cust_id'";
+    $result = mysqli_query($conn, $sql_delete_customer);
+    if ($result) { // success 
+    }
+    else {
+        mysqli_query($conn, "ROLLBACK");
+        return 'F4';
+        exit(mysqli_error($conn));
+    }
+
+    mysqli_commit($conn); 
+    // ----- End -----
+
+    mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
+
+    return 'T';
+}
+
+function delete_corp($conn, $cust_name) {
+    mysqli_query($conn, "SET AUTOCOMMIT=0"); // not submit automatically
+    
+    // 0: get u_id to set the table of customer/individual/corporate id
+    $check = mysqli_query($conn, "SELECT u_id FROM user_password WHERE username = '$cust_name' limit 0,1");
+    $result = mysqli_fetch_array($check);
+    if ($result) {
+        $cust_id = $result['u_id'];
+    }
+    else {
+        return 'F1';
+        exit(mysqli_error($conn));
+    }
+
+    // ----- Begin -----
+    mysqli_begin_transaction($conn);
+
+    // 1: delete in user_password table
+    $sql_delete_user_pw = "DELETE 
+                           FROM user_password 
+                           WHERE u_id='$cust_id'";
+    $result = mysqli_query($conn, $sql_delete_user_pw);
+    if ($result) { // success   
+    }
+    else {
+        print_r(mysqli_error($conn));
+        mysqli_query($conn, "ROLLBACK");
+        return 'F2';
+        exit(mysqli_error($conn));
+    }
+
+    // 2: delete in corporate table
+    $sql_delete_corporate = "DELETE 
+                             FROM corporate 
+                             WHERE cust_id='$cust_id'";
+    $result = mysqli_query($conn, $sql_delete_corporate);
+    if ($result) { // success 
+
+    }
+    else {
+        print_r(mysqli_error($conn));
+        mysqli_query($conn, "ROLLBACK");
+        return 'F3';
+        exit(mysqli_error($conn));
+    }
+
+    // 3: delete in customer table
+    $sql_delete_customer = "DELETE 
+                            FROM customer
+                            WHERE cust_id='$cust_id'";
+    $result = mysqli_query($conn, $sql_delete_customer);
+    if ($result) { // success 
+    }
+    else {
+        print_r(mysqli_error($conn));
+        mysqli_query($conn, "ROLLBACK");
+        return 'F4';
+        exit(mysqli_error($conn));
+    }
+
+    mysqli_commit($conn); 
+    // ----- End -----
+
+    mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
+
+    return 'T';
+    
 }
 
 

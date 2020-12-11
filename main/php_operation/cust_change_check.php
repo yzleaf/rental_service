@@ -9,6 +9,7 @@ if (!isset($_POST['submit'])) { // whether click the button
 }
 
 //$user_name = getCookieVal('cookie_uname');
+$user_type = getCookieVal('cookie_utype');
 $customer_type = getCookieVal('cookie_ctype');
 
 // $password = $_POST['password'];
@@ -26,7 +27,11 @@ $customer_type = getCookieVal('cookie_ctype');
 
 /////
 $cust_info = [];
-$cust_info['username'] = getCookieVal('cookie_uname');
+if ($user_type == 'ADMIN' || $user_type == 'EMPLOYEE') {
+    $cust_info['username'] = get_cust_name('cust_name');
+} else {
+    $cust_info['username'] = getCookieVal('cookie_uname');
+}
 
 $password = $_POST['password'];
 $cust_info['password'] = md5($password); // encript

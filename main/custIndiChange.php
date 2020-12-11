@@ -4,8 +4,13 @@
 	require_once ('./php_operation/customer.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
+	if ($user_type == 'ADMIN' || $user_type == 'EMPLOYEE') {
+	    $cust_name = get_cust_name('cust_name');
+	} else {
+	    $cust_name = getCookieVal('cookie_uname');
+	}
 	$customer_type = getCookieVal('cookie_ctype');
-	$cust_res = select_individual($conn, $user_name);
+	$cust_res = select_individual($conn, $cust_name);
 ?>
 
 <!DOCTYPE html>
