@@ -31,7 +31,8 @@
     $rentInfo['coupon_id'] = $_POST['coupon_id'];
     
     if ($cust_type == "I") {
-    	if ($rentInfo['coupon_id']=="") {
+    	if ($rentInfo['coupon_id']=="No") {
+    		$rentInfo['coupon_id'] = 9999;
 	    	$rentInfo['discount'] = 1;
 	    } else {
 	    	$rentInfo['discount'] = select_coupon_discount($conn, $rentInfo['coupon_id']);

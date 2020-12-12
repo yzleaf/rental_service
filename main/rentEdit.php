@@ -14,8 +14,8 @@
 
 	$cust_id = $service_res['cust_id'];
     $cust_type = $service_res['cust_type'];
-    $coupon_id = select_coupon_id($conn, $cust_id);
     if ($cust_type == "I") {
+    	$coupon_id = select_coupon_id($conn, $cust_id);
 	    $service_res['discount'] = select_coupon_discount($conn, $coupon_id);
     } else {
     	$service_res['discount'] = select_corp_discount($conn, $cust_id);

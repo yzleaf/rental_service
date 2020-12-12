@@ -30,7 +30,8 @@
 	$rentInfo['invoice_id'] = $_POST['service_id'];
 	$rentInfo['invoice_date'] = "2999-01-01";
 	$rentInfo['invoice_amount'] = "999999";
-	$rentInfo['status'] = "unpaid";
+	$rentInfo['status'] = "unfinished";
+
 
 	insert_service($conn, $rentInfo);
 

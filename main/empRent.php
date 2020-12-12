@@ -96,10 +96,11 @@
 										<td>$row[status]</td>
 										<td><form action="empPay.php" method="post" onsubmit="return checkPay('$row[status]');">
 										    <button name="pay" 
-										       value="#" type="submit">pay</button></form></td>
+										       value="$row[invoice_id]" type="submit">pay</button></form></td>
 										<td><form action="rentDetail.php" method="post"><button name="detail" 
 										       value="$row[service_id]" type="submit">detail</button></form></td>
-										<td><form action="rentEdit.php" method="post"><button name="edit" 
+										<td><form action="rentEdit.php" method="post" onsubmit="return checkEdit('$row[status]');">
+										    <button name="edit" 
 										       value="$row[service_id]" type="submit">edit</button></form></td>		
 										<td><form action="rentDelete.php" method="post" onsubmit="return checkDelete('$row[status]');">
 										    <button name="delete" 
@@ -117,6 +118,10 @@
 								alert('ALREADY PAID! Cannot pay again');
 								return false;
 							} 
+							if (status == "unfinished") {
+								alert('UNFINISHED! Cannot pay now');
+								return false;
+							}
 							return true;
 						}
 
@@ -126,6 +131,23 @@
 								alert('UNPAID! Cannot Delete');
 								return false;
 							} 
+							if (status == "unfinished") {
+								alert('UNFINISHED! Cannot delete now');
+								return false;
+							}
+							return true;
+						}
+
+						function checkEdit(obj) {
+							var status = obj.toString();
+							if (status == "unpaid") {
+								alert('UNPAID! Cannot Edit');
+								return false;
+							} 
+							if (status == "paid") {
+								alert('ALREADY PAID! Cannot Edit');
+								return false;
+							}
 							return true;
 						}
 					</script>

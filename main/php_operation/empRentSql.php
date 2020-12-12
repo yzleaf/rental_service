@@ -204,12 +204,12 @@
 	        print_r(mysqli_error($conn));
 	    }
 
-        // insert into invoice
 
+        // insert into invoice
         $invoice_insert_res = mysqli_query($conn, "INSERT INTO invoice 
 									       VALUES ('$rentInfo[invoice_id]', date'$rentInfo[invoice_date]',
 									       '$rentInfo[invoice_amount]', '$select_cust_id', $rentInfo[service_id],
-									       '$rentInfo[status]')
+									       '$rentInfo[status]',0,0)
 									       ");
 		if ($invoice_insert_res) { // success 
 			$result = 'T';  
@@ -257,9 +257,11 @@
 	        print_r(mysqli_error($conn));
 	    }
 
+
         // update invoice
         $invoice_update_res = mysqli_query($conn, "UPDATE invoice 
-									               SET invoice_date=date'$rentInfo[invoice_date]'
+									               SET invoice_date=date'$rentInfo[invoice_date]',
+									               status='unpaid'
 									               WHERE invoice_id='$rentInfo[invoice_id]'
 									       ");
 		if ($invoice_update_res) { // success 

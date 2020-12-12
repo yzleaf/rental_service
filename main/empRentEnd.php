@@ -103,7 +103,7 @@
 						</div>
 						<div class="form-group">
 							<label for="">coupon_id</label>
-							<input type="text" class="form-control" id="coupon_id" name="coupon_id" value="">
+							<input type="text" class="form-control" id="coupon_id" name="coupon_id" value="No">
 						</div>
 						<div class="form-group">
 							<button class="btn btn-primary btn-block" type="submit" name="submit">End This Rental</button>
