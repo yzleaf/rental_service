@@ -141,7 +141,7 @@
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F1';
+	        $result = 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
@@ -158,7 +158,7 @@
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F2';
+	        $result = 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
@@ -194,13 +194,12 @@
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F1';
+	        $result = 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
 
-        // insert into invoice
-
+        // update invoice
         $invoice_update_res = mysqli_query($conn, "UPDATE invoice 
 									               SET invoice_date=date'$rentInfo[invoice_date]'
 									               WHERE invoice_id='$rentInfo[invoice_id]'
@@ -210,10 +209,27 @@
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F2';
+	        $result = 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
+
+	    //update vehicle
+	    $vehicle_update_res = mysqli_query($conn, "UPDATE vehicle
+									               SET location_id='$rentInfo[drop_location_id]'
+									               WHERE vin='$rentInfo[vin]'
+									       ");
+	    if ($vehicle_update_res) { // success 
+			$result = 'T';  
+		}
+		else {
+		    mysqli_query($conn, "ROLLBACK");
+	        $result = 'F';
+	        //exit(mysqli_error($conn));
+	        print_r(mysqli_error($conn));
+	    }
+
+
 
         mysqli_commit($conn); 
 	    // ----- End -----
