@@ -175,6 +175,58 @@
 
 	}
 
+	function insert_invoice($conn, $rentInfo) {
+
+		mysqli_query($conn, "SET AUTOCOMMIT=0"); // not submit automatically
+
+		// ----- Begin -----
+        mysqli_begin_transaction($conn);
+
+        // update services
+        $service_update_res = mysqli_query($conn, "UPDATE services 
+        	                                       SET drop_date=date'$rentInfo[drop_date]', 
+        	                                       end_odometer='$rentInfo[end_odometer]',
+        	                                       drop_location_id='$rentInfo[drop_location_id]'
+									               WHERE service_id='$rentInfo[service_id]'
+									       ");
+		if ($service_update_res) { // success 
+			$result = 'T';  
+		}
+		else {
+		    mysqli_query($conn, "ROLLBACK");
+	        $result = 'F1';
+	        //exit(mysqli_error($conn));
+	        print_r(mysqli_error($conn));
+	    }
+
+        // insert into invoice
+
+        $invoice_update_res = mysqli_query($conn, "UPDATE invoice 
+									               SET invoice_date=date'$rentInfo[invoice_date]'
+									               WHERE invoice_id='$rentInfo[invoice_id]'
+									       ");
+		if ($invoice_update_res) { // success 
+			$result = 'T';  
+		}
+		else {
+		    mysqli_query($conn, "ROLLBACK");
+	        $result = 'F2';
+	        //exit(mysqli_error($conn));
+	        print_r(mysqli_error($conn));
+	    }
+
+        mysqli_commit($conn); 
+	    // ----- End -----
+
+	    mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
+
+		set_flag_execute($result);
+		// redict Status Result
+
+		header('location: ../totalCheck.php');
+
+	}
+
 
 
 

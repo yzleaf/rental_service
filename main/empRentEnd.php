@@ -76,30 +76,30 @@
 			<div>
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
-					<form action="#" method="post">
+					<form action="./php_operation/endRent.php" method="post">
 						<div class="form-group">
 							<label for="">service_id</label>
-							<input type="text" class="form-control" id="service_id" name="service_id" value="#" required="required">
+							<input type="text" class="form-control" id="service_id" name="service_id" value="" required="required">
 						</div>
-						<div class="form-group">
+						<div class="form-group" hidden=hidden>
 							<label for="">invoice_id</label>
-							<input type="text" class="form-control" id="invoice_id" name="invoice_id" value="#" required="required">
+							<input type="text" class="form-control" id="invoice_id" name="invoice_id" value="">
 						</div>
 						<div class="form-group">
 							<label for="">drop_date</label>
-							<input type="text" class="form-control" id="drop_date" name="drop_date" value="#" required=required>
+							<input type="text" class="form-control" id="drop_date" name="drop_date" value="" required=required>
 						</div>
 						<div class="form-group">
 							<label for="">end_odometer</label>
-							<input type="text" class="form-control" id="end_odometer" name="end_odometer" value="#" required=required>
+							<input type="text" class="form-control" id="end_odometer" name="end_odometer" value="" required=required>
 						</div>
 						<div class="form-group">
 							<label for="">drop_location_id</label>
-							<input type="text" class="form-control" id="drop_location_id" name="drop_location_id" value="#" required=required>
+							<input type="text" class="form-control" id="drop_location_id" name="drop_location_id" value="" required=required>
 						</div>
 						<div class="form-group">
 							<label for="">invoice_date</label>
-							<input type="text" class="form-control" id="invoice_date" name="invoice_date" value="#" required=required>
+							<input type="text" class="form-control" id="invoice_date" name="invoice_date" value="" required=required>
 						</div>
 						<div class="form-group">
 							<button class="btn btn-primary btn-block" type="submit" name="submit">End This Rental</button>
