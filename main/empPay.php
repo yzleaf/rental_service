@@ -70,68 +70,40 @@
 			</div>
 		</div>
 		<div class="col-md-10">
-			<div class="row" style="margin-bottom: 20px;">
-				<a href="empRent.php"><button class="col-md-4 btn btn-primary active">All</button></a>
-				<a href="empRentStart.php"><button class="col-md-4 btn btn-primary">Start New</button></a>
-				<a href="empRentEnd.php"><button class="col-md-4 btn btn-primary">End Order</button></a>
-			</div>
-			<div class="row" style="margin-bottom: 20px;">
-				<table class="table table-striped" style="margin-top: 30px;">
-					<tr>
-						<th>Service_id</th>
-						<th>Invoice_id</th>
-						<th>status</th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</tr>
-					<?php 
-						$allRent = allRent($conn);
-						while ($row = mysqli_fetch_array($allRent)) {
-							print <<< EOF
-									<tr>
-										<td>$row[service_id]</td>
-										<td>$row[invoice_id]</td>
-										<td>$row[status]</td>
-										<td><form action="empPay.php" method="post" onsubmit="return checkPay('$row[status]');">
-										    <button name="pay" 
-										       value="#" type="submit">pay</button></form></td>
-										<td><form action="rentDetail.php" method="post"><button name="detail" 
-										       value="$row[service_id]" type="submit">detail</button></form></td>
-										<td><form action="rentEdit.php" method="post"><button name="edit" 
-										       value="$row[service_id]" type="submit">edit</button></form></td>		
-										<td><form action="rentDelete.php" method="post" onsubmit="return checkDelete('$row[status]');">
-										    <button name="delete" 
-										       value="$row[service_id]" type="submit"">delete</button></form></td>
-									</tr>
-									
-							EOF;
-						}
-						
-					?>
-					<script>
-						function checkPay(obj) {
-							var status = obj.toString();
-							if (status == "paid") {
-								alert('ALREADY PAID! Cannot pay again');
-								return false;
-							} 
-							return true;
-						}
-
-						function checkDelete(obj) {
-		                    var status = obj.toString();
-							if (status == "unpaid") {
-								alert('UNPAID! Cannot Delete');
-								return false;
-							} 
-							return true;
-						}
-					</script>
+			<h2>Pay</h2>
+			<div class="row">
+				<form action="#" method="post">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="">Pay Method</label>
+							<select class="form-control" name="pay_method">
+									<option value="='C'">Credit Card</option>
+									<option value="='D'">Debit Card</option>
+									<option value="='G'">Gift Card</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="">Pay id</label>
+							<input type="text" class="form-control" id="model" name="pay_id" value="">
+						</div>
+						<div class="form-group">
+							<label for="">Card Number</label>
+							<input type="text" class="form-control" id="" name="pay_card_no" value="" required=required>
+						</div>
+						<div class="form-group">
+							<label for="">Pay Amount</label>
+							<input type="text" class="form-control" id="model" name="pay_amount" value="" required=required>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary btn-block" type="submit" name="submit" value="add">Pay</button>
+						</div>
+					</div>
+					<div class="col-md-3"></div>
 					
-				</table>
+				</form>
 			</div>
+			
 		</div>
 	</div>
 	<div class="footer">
