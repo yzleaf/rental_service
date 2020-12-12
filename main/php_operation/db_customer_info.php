@@ -1,6 +1,4 @@
 <?php
-//include ('conn.php');
-//require_once ('common.php');
 
 function select_cust_type($conn, $cust_name) {
     $check = mysqli_query($conn, "SELECT cust_type FROM customer 

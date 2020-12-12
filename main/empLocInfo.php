@@ -1,5 +1,7 @@
 <?php
+	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once('./php_operation/db_location_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 ?>
@@ -69,8 +71,44 @@
 		</div>
 		<div class="col-md-10">
 			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, perferendis, nisi. Distinctio voluptatibus maxime adipisci iusto reprehenderit quasi aperiam fugiat qui. Recusandae illum et doloribus quae natus numquam, incidunt animi.
-				Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eaque, vel eligendi, ullam laborum aliquam perspiciatis? Et laboriosam quibusdam asperiores minima corporis vitae placeat! Dolore quidem nostrum explicabo iure, id ipsa.
+				<div class="row" style="margin-bottom: 20px;">
+				<div class="col-md-4"></div>
+					<a href="empLocAdd.php">
+						<button class="col-md-4 btn btn-primary">Add Location</button>
+					</a>	
+				</a>
+			</div>
+			<div class="row" style="margin-bottom: 20px;">
+				<table class="table table-striped" style="margin-top: 30px;">
+					<tr>
+						<th>Location ID</th>
+						<th>Street</th>
+						<th>City</th>
+						<th>State</th>
+						<th>Zip Code</th>
+						<th>Phone Number</th>
+						<th></th>
+					</tr>
+					<?php 
+						$allLoc = allLoc($conn);
+						while ($row = mysqli_fetch_array($allLoc)) {
+							print <<< EOF
+									<tr>
+										<td>$row[location_id]</td>
+										<td>$row[loc_street]</td>
+										<td>$row[loc_city]</td>
+										<td>$row[loc_state]</td>
+										<td>$row[loc_zipcode]</td>
+										<td>$row[loc_phone_no]</td>
+										<td><form action="empLocEdit.php" method="post"><button name="edit_location" 
+												value="$row[location_id]" type="submit">edit</button></form></td>
+									</tr>
+							EOF;
+
+						}
+					?>
+				</table>
+					
 			</div>
 		</div>
 	</div>

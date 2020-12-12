@@ -1,7 +1,7 @@
 <?php
 	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
-	require_once ('./php_operation/customer.php');
+	require_once ('./php_operation/db_customer_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	if ($user_type == 'ADMIN' || $user_type == 'EMPLOYEE') {

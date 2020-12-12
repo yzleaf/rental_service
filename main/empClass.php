@@ -1,8 +1,9 @@
 <?php
+	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once('./php_operation/db_class_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
-	include ('./php_operation/conn.php');
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +73,7 @@
 			<div>
 				<div class="row" style="margin-bottom: 20px;">
 				<div class="col-md-4"></div>
-					<a href="signup.php">
+					<a href="empClassAdd.php">
 						<button class="col-md-4 btn btn-primary">Add Class</button>
 					</a>	
 				</div>
@@ -86,7 +87,20 @@
 							<th></th>
 						</tr>
 						<?php 
-							
+							$allClass = allClass($conn);
+							while ($row = mysqli_fetch_array($allClass)) {
+								print <<< EOF
+										<tr>
+											<td>$row[class_id]</td>
+											<td>$row[class_name]</td>
+											<td>$row[rental_rate]</td>
+											<td>$row[over_fee]</td>
+											<td><form action="empClassEdit.php" method="post"><button name="edit_class" 
+													value="$row[class_id]" type="submit">edit</button></form></td>
+										</tr>
+								EOF;
+	
+							}
 						?>
 					</table>
 				</div>

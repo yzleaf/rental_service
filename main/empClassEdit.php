@@ -1,9 +1,20 @@
 <?php
 	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/db_class_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	$customer_type = getCookieVal('cookie_ctype');
+
+	// determine which class id is to be edited
+	if (!isset($_POST['edit_class'])) { // whether click the button
+		$class_id = class_id_get_session();
+	} else {
+		$class_id = $_POST['edit_class'];
+		class_id_set_session($class_id);
+	}
+
+	$class_res = specific_class($conn, $class_id);
 ?>
 
 <!DOCTYPE html>
@@ -59,34 +70,26 @@
 		<div class="container container-small">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<h2>Add Location</h2>
-			<form action="./php_operation/emp_loc_check.php" method="post">
+			<h2>Edit Class</h2>
+			<form action="./php_operation/emp_class_check.php" method="post">
 				<div class="form-group">
-					<label for="">location id</label>
-					<input type="text" class="form-control" id="location_id" name="location_id" required="required">
+					<label for="">Class ID</label>
+					<input type="text" class="form-control" id="class_id" name="class_id" value="<?php echo $class_res['class_id'] ?>" required="required" readonly="readonly">
 				</div>
 				<div class="form-group">
-					<label for="">street</label>
-					<input type="text" class="form-control" id="loc_street" name="loc_street" required=required>
+					<label for="">Class Name</label>
+					<input type="text" class="form-control" id="class_name" name="class_name" value="<?php echo $class_res['class_name'] ?>" required="required" readonly="readonly">
 				</div>
 				<div class="form-group">
-					<label for="">city</label>
-					<input type="text" class="form-control" id="loc_city" name="loc_city" required=required>
+					<label for="">Rental Rate</label>
+					<input type="text" class="form-control" id="rental_rate" name="rental_rate" value="<?php echo $class_res['rental_rate'] ?>" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">state</label>
-					<input type="text" class="form-control" id="loc_state" name="loc_state" required=required>
+					<label for="">Over Fee</label>
+					<input type="text" class="form-control" id="over_fee" name="over_fee" value="<?php echo $class_res['over_fee'] ?>" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">zip code</label>
-					<input type="text" class="form-control" id="loc_zipcode" name="loc_zipcode" required=required>
-				</div>
-				<div class="form-group">
-					<label for="">phone number</label>
-					<input type="text" class="form-control" id="loc_phone_num" name="loc_phone_num" required=required>
-				</div>
-				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit" name="submit" value="add">Add Location</button>
+					<button class="btn btn-primary btn-block" type="submit" name="submit" value="edit">Edit Class</button>
 				</div>
 			</form>
 		</div>

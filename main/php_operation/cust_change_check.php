@@ -1,7 +1,7 @@
 <?php
 include ('conn.php');
 require_once ('common.php');
-require_once ('customer.php');
+require_once ('db_customer_info.php');
 
 
 if (!isset($_POST['submit'])) { // whether click the button

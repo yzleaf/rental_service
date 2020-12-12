@@ -41,7 +41,7 @@ if ($result) { // success
 }
 else {
     $pw_reset_res = 'F';
-    exit(mysqli_error($conn));
+//    exit(mysqli_error($conn));
 }
 
 set_flag_execute($pw_reset_res);

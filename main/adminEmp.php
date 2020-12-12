@@ -1,5 +1,7 @@
 <?php
+	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/db_emp_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 ?>
@@ -70,12 +72,32 @@
 		<div class="col-md-10">
 			<div class="row" style="margin-bottom: 20px;">
 				<div class="col-md-4"></div>
-				<a href="addEmp.php"><button class="col-md-4 btn btn-primary">Add Employee</button></a>
+				<a href="adminEmpAdd.php"><button class="col-md-4 btn btn-primary">Add Employee</button></a>
 			</div>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore reiciendis, nesciunt consectetur quaerat consequuntur, eligendi rerum autem nostrum veniam, ab, suscipit voluptas voluptatum delectus quos facere similique velit! Distinctio, fugiat?
-				Lorem ipsum dolor sit amet consectetur adipisicing, elit. Natus quia soluta sed repellendus et. Eos saepe illo, veniam unde laborum. Quibusdam recusandae porro placeat nisi commodi nulla nobis repellat mollitia.
-				Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Nostrum, dignissimos. Veniam consequatur facere suscipit quaerat vitae tenetur officia fugiat excepturi optio iusto, provident voluptas rem. Earum dicta fuga doloremque voluptates.
+			<div class="row" style="margin-bottom: 20px;">
+				<table class="table table-striped" style="margin-top: 30px;">
+					<tr>
+						<th>Username</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<?php 
+						$allEmp = allEmp($conn);
+						while ($row = mysqli_fetch_array($allEmp)) {
+							print <<< EOF
+									<tr>
+										<td>$row[username]</td>
+										<td><form action="adminEmpEdit.php" method="post"><button name="edit_emp" 
+										       value="$row[username]" type="submit">edit</button></form></td>
+										<td><form action="adminEmpDelete.php" method="post"><button name="edit_emp" 
+										       value="$row[username]" type="submit">delete</button></form></td>
+									</tr>
+							EOF;
+
+						}
+					?>
+				</table>
+				
 			</div>
 			
 		</div>

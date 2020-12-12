@@ -1,7 +1,7 @@
 <?php 
 	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
-	require_once ('./php_operation/customer.php');
+	require_once ('./php_operation/db_customer_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 
@@ -18,14 +18,24 @@
 	}
 
 	if ($customer_type == "I") {
-		delete_indi($conn, $cust_name);
+		$result = delete_indi($conn, $cust_name);
 	} else {
-		delete_corp($conn, $cust_name);
+		$result = delete_corp($conn, $cust_name);
 	}
 
-	header('location: totalCheck.php');
-
+	if ($result == 'T') { // success
+		$cust_delete_res = 'T';    
+	}
+	else {
+		$cust_delete_res = 'F';
+	//	exit(mysqli_error($conn));
+	}
 	
+	set_flag_execute($cust_delete_res);
+	
+	
+	// redict Status Result
+	header('location: ./totalCheck.php');
 
 
 ?>

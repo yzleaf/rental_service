@@ -1,5 +1,7 @@
 <?php
+	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/db_car_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 ?>
@@ -69,8 +71,50 @@
 		</div>
 		<div class="col-md-10">
 			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, perferendis, nisi. Distinctio voluptatibus maxime adipisci iusto reprehenderit quasi aperiam fugiat qui. Recusandae illum et doloribus quae natus numquam, incidunt animi.
-				Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eaque, vel eligendi, ullam laborum aliquam perspiciatis? Et laboriosam quibusdam asperiores minima corporis vitae placeat! Dolore quidem nostrum explicabo iure, id ipsa.
+				<div class="row" style="margin-bottom: 20px;">
+				<div class="col-md-4"></div>
+					<a href="empCarAdd.php">
+						<button class="col-md-4 btn btn-primary">Add Car</button>
+					</a>	
+				</a>
+			</div>
+			<div class="row" style="margin-bottom: 20px;">
+				<table class="table table-striped" style="margin-top: 30px;">
+					<tr>
+						<th>VIN</th>
+						<th>Make</th>
+						<th>Model</th>
+						<th>Produce Date</th>
+						<th>Lincense Plate Number</th>
+						<th>Class</th>
+						<th>Rental Rate</th>
+						<th>Over fee</th>
+						<th>Location ID</th>
+						<th></th>
+					</tr>
+					<?php 
+						$allCar = allCar($conn);
+						while ($row = mysqli_fetch_array($allCar)) {
+							print <<< EOF
+									<tr>
+										<td>$row[vin]</td>
+										<td>$row[make]</td>
+										<td>$row[model]</td>
+										<td>$row[year]</td>
+										<td>$row[lpn]</td>
+										<td>$row[class_name]</td>
+										<td>$row[rental_rate]</td>
+										<td>$row[over_fee]</td>
+										<td>$row[location_id]</td>
+										<td><form action="empCarEdit.php" method="post"><button name="edit_car" 
+												value="$row[vin]" type="submit">edit</button></form></td>
+									</tr>
+							EOF;
+
+						}
+					?>
+				</table>
+					
 			</div>
 		</div>
 	</div>

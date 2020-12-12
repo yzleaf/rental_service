@@ -70,23 +70,23 @@
 		<div id="myMap">
 			<form action="locDetail.php" target="_blank" method="post">
 				<input class="hidden" name="loc" value="New York">
-				<button type="submit" class="map-btn" style="top:185px; left:1100px;">1</button>
+				<button type="submit" name="submit" class="map-btn" style="top:185px; left:1100px;">1</button>
 			</form>
 			<form action="locDetail.php" target="_blank" method="post">
 				<input class="hidden" name="loc" value="Pennsylvania">
-				<button type="submit" class="map-btn" style="top:260px; left:1050px;">2</button>
+				<button type="submit" name="submit" class="map-btn" style="top:260px; left:1050px;">2</button>
 			</form>
 			<form action="locDetail.php" target="_blank" method="post">
 				<input class="hidden" name="loc" value="Massachusetts">
-				<button type="submit" class="map-btn" style="top:160px; left:1221px;">3</button>
+				<button type="submit" name="submit" class="map-btn" style="top:160px; left:1221px;">3</button>
 			</form>
 			<form action="locDetail.php" target="_blank" method="post">
 				<input class="hidden" name="loc" value="California">
-				<button type="submit" class="map-btn" style="top:400px; left:100px;">4</button>
+				<button type="submit" name="submit" class="map-btn" style="top:400px; left:100px;">4</button>
 			</form>
 			<form action="locDetail.php" target="_blank" method="post">
 				<input class="hidden" name="loc" value="Texas">
-				<button type="submit" class="map-btn" style="top:580px; left:580px;">5</button>
+				<button type="submit" name="submit" class="map-btn" style="top:580px; left:580px;">5</button>
 			</form>
 		</div>
 	</div>

@@ -12,13 +12,6 @@ $username = $_POST['email'];
 $password = $_POST['password'];
 $password = md5($password); // encript
 
-// ---------test
-// print_r($_POST['submit']); die();
-// echo 'Username: '. $username. "<br>";
-// echo 'Password: '. $password. "<br>";
-
-// ---------test end
-
 $check_query_u_p = mysqli_query($conn, "SELECT u_id, u_type FROM user_password 
                                     WHERE username='$username' AND password='$password' limit 0, 1");
 $result_u_p = mysqli_fetch_array($check_query_u_p);

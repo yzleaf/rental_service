@@ -1,9 +1,22 @@
 <?php
 	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/db_car_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	$customer_type = getCookieVal('cookie_ctype');
+
+	// determine which car vin is to be edited
+	if (!isset($_POST['edit_car'])) { // whether click the button
+		$vin = car_vin_get_session();
+	} else {
+		$vin = $_POST['edit_car'];
+		
+		car_vin_set_session($vin);
+	}
+
+	$car_res = specific_car($conn, $vin);
+
 ?>
 
 <!DOCTYPE html>
@@ -59,34 +72,38 @@
 		<div class="container container-small">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<h2>Add Location</h2>
-			<form action="./php_operation/emp_loc_check.php" method="post">
+			<h2>Edit Car</h2>
+			<form action="./php_operation/emp_car_check.php" method="post">
 				<div class="form-group">
-					<label for="">location id</label>
-					<input type="text" class="form-control" id="location_id" name="location_id" required="required">
+					<label for="">Vin</label>
+					<input type="text" class="form-control" id="vin" name="vin" value="<?php echo $car_res['vin'] ?>" required="required" readonly="readonly">
 				</div>
 				<div class="form-group">
-					<label for="">street</label>
-					<input type="text" class="form-control" id="loc_street" name="loc_street" required=required>
+					<label for="">Make</label>
+					<input type="text" class="form-control" id="make" name="make" value="<?php echo $car_res['make'] ?>" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">city</label>
-					<input type="text" class="form-control" id="loc_city" name="loc_city" required=required>
+					<label for="">Model</label>
+					<input type="text" class="form-control" id="model" name="model" value="<?php echo $car_res['model'] ?>" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">state</label>
-					<input type="text" class="form-control" id="loc_state" name="loc_state" required=required>
+					<label for="">Year</label>
+					<input type="text" class="form-control" id="year" name="year" value="<?php echo $car_res['year'] ?>" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">zip code</label>
-					<input type="text" class="form-control" id="loc_zipcode" name="loc_zipcode" required=required>
+					<label for="">License Plate Number</label>
+					<input type="text" class="form-control" id="lpn" name="lpn" value="<?php echo $car_res['lpn'] ?>" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">phone number</label>
-					<input type="text" class="form-control" id="loc_phone_num" name="loc_phone_num" required=required>
+					<label for="">Class Name</label>
+					<input type="text" class="form-control" id="class_name" name="class_name" value="<?php echo $car_res['class_name'] ?>" required=required>
 				</div>
 				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit" name="submit" value="add">Add Location</button>
+					<label for="">Location ID</label>
+					<input type="text" class="form-control" id="location_id" name="location_id" value="<?php echo $car_res['location_id'] ?>" required=required>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary btn-block" type="submit" name="submit" value="edit">Edit Car</button>
 				</div>
 			</form>
 		</div>

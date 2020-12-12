@@ -1,7 +1,6 @@
 <?php
 	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
-	require_once ('./php_operation/customer.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	$customer_type = getCookieVal('cookie_ctype');
@@ -61,37 +60,37 @@
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<h2>Add Car</h2>
-			<form action="#" method="post">
+			<form action="./php_operation/emp_car_check.php" method="post">
 				<div class="form-group">
-					<label for="">vin</label>
-					<input type="text" class="form-control" id="vin" name="vin" value="#" required="required">
+					<label for="">Vin</label>
+					<input type="text" class="form-control" id="vin" name="vin" value="" required="required">
 				</div>
 				<div class="form-group">
-					<label for="">make</label>
-					<input type="text" class="form-control" id="make" name="make" value="#" required=required>
+					<label for="">Make</label>
+					<input type="text" class="form-control" id="make" name="make" value="" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">model</label>
-					<input type="text" class="form-control" id="model" name="model" value="#" required=required>
+					<label for="">Model</label>
+					<input type="text" class="form-control" id="model" name="model" value="" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">year</label>
-					<input type="text" class="form-control" id="year" name="year" value="#" required=required>
+					<label for="">Year</label>
+					<input type="text" class="form-control" id="year" name="year" value="" required=required placeholder="YYYY-MM-DD">
 				</div>
 				<div class="form-group">
-					<label for="">license plate number</label>
-					<input type="text" class="form-control" id="lpn" name="lpn" value="#" required=required>
+					<label for="">License Plate Number</label>
+					<input type="text" class="form-control" id="lpn" name="lpn" value="" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">class name</label>
-					<input type="text" class="form-control" id="class_name" name="class_name" value="#" required=required>
+					<label for="">Class Name</label>
+					<input type="text" class="form-control" id="class_name" name="class_name" value="" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">location id</label>
-					<input type="text" class="form-control" id="location_id" name="location_id" value="#" required=required>
+					<label for="">Location ID</label>
+					<input type="text" class="form-control" id="location_id" name="location_id" value="" required=required>
 				</div>
 				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit" name="submit">Add Car</button>
+					<button class="btn btn-primary btn-block" type="submit" name="submit" value="add">Add Car</button>
 				</div>
 			</form>
 		</div>

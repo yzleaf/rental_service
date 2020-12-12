@@ -1,9 +1,19 @@
 <?php
 	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/db_emp_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	$customer_type = getCookieVal('cookie_ctype');
+
+	// determine which employee is to be edited
+	if (!isset($_POST['edit_emp'])) { // whether click the button
+		$emp_name = emp_name_get_session();
+	} else {
+		$emp_name = $_POST['edit_emp'];
+		emp_name_set_session($emp_name);
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -59,34 +69,18 @@
 		<div class="container container-small">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<h2>Add Location</h2>
-			<form action="./php_operation/emp_loc_check.php" method="post">
+			<h2>Edit Employee</h2>
+			<form action="./php_operation/emp_emp_check.php" method="post">
 				<div class="form-group">
-					<label for="">location id</label>
-					<input type="text" class="form-control" id="location_id" name="location_id" required="required">
+					<label for="">user name</label>
+					<input type="text" class="form-control" id="username" name="username" value="<?php echo $emp_name ?>" required="required" readonly="readonly">
 				</div>
 				<div class="form-group">
-					<label for="">street</label>
-					<input type="text" class="form-control" id="loc_street" name="loc_street" required=required>
+					<label for="">password</label>
+					<input type="password" class="form-control" id="password" name="password" value="" required=required>
 				</div>
 				<div class="form-group">
-					<label for="">city</label>
-					<input type="text" class="form-control" id="loc_city" name="loc_city" required=required>
-				</div>
-				<div class="form-group">
-					<label for="">state</label>
-					<input type="text" class="form-control" id="loc_state" name="loc_state" required=required>
-				</div>
-				<div class="form-group">
-					<label for="">zip code</label>
-					<input type="text" class="form-control" id="loc_zipcode" name="loc_zipcode" required=required>
-				</div>
-				<div class="form-group">
-					<label for="">phone number</label>
-					<input type="text" class="form-control" id="loc_phone_num" name="loc_phone_num" required=required>
-				</div>
-				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit" name="submit" value="add">Add Location</button>
+					<button class="btn btn-primary btn-block" type="submit" name="submit" value="edit">Edit Emplyee</button>
 				</div>
 			</form>
 		</div>

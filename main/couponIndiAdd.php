@@ -2,17 +2,17 @@
 	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
 	require_once ('./php_operation/empCouponSql.php');
-	require_once ('./php_operation/customer.php');
+	require_once ('./php_operation/db_customer_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	$customer_type = getCookieVal('cookie_ctype');
-	if (!isset($_POST['editCoupon'])) { // whether click the button
-    	$coupon_id = get_coupon_id('coupon_id');
-	} else {
-		$coupon_id = $_POST['editCoupon'];
-		set_coupon_id($coupon_id);
-	}
-	$coupon_res = select_coupon($conn, $coupon_id);
+	// if (!isset($_POST['editCoupon'])) { // whether click the button
+    // 	$coupon_id = get_coupon_id('coupon_id');
+	// } else {
+	// 	$coupon_id = $_POST['editCoupon'];
+	// 	set_coupon_id($coupon_id);
+	// }
+	// $coupon_res = select_coupon($conn, $coupon_id);
 ?>
 
 <!DOCTYPE html>

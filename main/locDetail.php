@@ -1,15 +1,20 @@
 <?php
     include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
-	require_once ('./php_operation/location_info.php');
+	require_once ('./php_operation/db_location_info.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 ?>
 <?php 
-	$loc = $_POST['loc'];
-    loc_state_session($loc);
-    $loc_res = loc_normal_info($conn, $_SESSION['loc_state']);
-    $loc_car = loc_car_info($conn, $_SESSION['loc_state']);
+	if (!isset($_POST['submit'])) { // not click the button
+		$loc = loc_state_get_session();
+	}
+	else {
+		$loc = $_POST['loc'];
+		loc_state_set_session($loc);
+	}
+    $loc_res = loc_normal_info($conn, $loc);
+    $loc_car = loc_car_info($conn, $loc);
 ?>
 
 <!DOCTYPE html>
@@ -65,12 +70,12 @@
 		</div>
 	</div>
 	<div class="row">
-		<h2><?php echo $_SESSION['loc_state']?> information in detail</h2>
+		<h2><?php echo $loc?> information in detail</h2>
 	</div>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10 loc_info_total clearfix">
-			<h3><?php echo $_SESSION['loc_state']?> office information</h3>
+			<h3><?php echo $loc?> office information</h3>
 			<div class="col-sm-4" style="padding: 0;">
 				<img class="loc_img" src="https://dummyimage.com/300x200/e000e0/fff">
 			</div>
