@@ -57,10 +57,35 @@ function get_cust_name($addr) {
     return $_SESSION[$addr];
 }
 
+function set_coupon_id($name) {
+    session_start();
+    $_SESSION['coupon_id'] = $name;
+}
 
+function get_coupon_id($addr) {
+    session_start();
+    return $_SESSION[$addr];
+}
 
+function set_corp_reg_no($name) {
+    session_start();
+    $_SESSION['corp_reg_no'] = $name;
+}
 
+function get_corp_reg_no($addr) {
+    session_start();
+    return $_SESSION[$addr];
+}
 
+function set_service_id($name) {
+    session_start();
+    $_SESSION['service_id'] = $name;
+}
+
+function get_service_id($addr) {
+    session_start();
+    return $_SESSION[$addr];
+}
 
 
 

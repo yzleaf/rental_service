@@ -61,6 +61,7 @@
 				<a href="empCustInfo.php" class="list-group-item active">Customer Message</a>
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
+				<a href="empClass.php" class="list-group-item">Class Message</a>
 				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
 				<?php if ($user_type == 'ADMIN'): ?>
 					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
@@ -79,40 +80,38 @@
 					<a href="signup.php">
 						<button class="col-md-4 btn btn-primary">Add Customer</button>
 					</a>	
-				</a>
-			</div>
-			<div class="row" style="margin-bottom: 20px;">
-				<?php include('./php_operation/empCustSql.php') ?>
-				<table class="table table-striped" style="margin-top: 30px;">
-					<tr>
-						<th>Email</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Customer Type</th>
-						<th></th>
-						<th></th>
-					</tr>
-					<?php 
-						$allCust = allCust($conn);
-						while ($row = mysqli_fetch_array($allCust)) {
-							print <<< EOF
-									<tr>
-										<td>$row[email]</td>
-										<td>$row[fname]</td>
-										<td>$row[lname]</td>
-										<td>$row[cust_type]</td>
-										<td><form action="empCustEdit.php" method="post"><button name="editEmail" 
-										       value="$row[email]" type="submit">edit</button></form></td>
-										<td><form action="empCustDelete.php" method="post"><button name="editEmail" 
-										       value="$row[email]" type="submit">delete</button></form></td>
-									</tr>
-							EOF;
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<?php include('./php_operation/empCustSql.php') ?>
+					<table class="table table-striped" style="margin-top: 30px;">
+						<tr>
+							<th>Email</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Customer Type</th>
+							<th></th>
+							<th></th>
+						</tr>
+						<?php 
+							$allCust = allCust($conn);
+							while ($row = mysqli_fetch_array($allCust)) {
+								print <<< EOF
+										<tr>
+											<td>$row[email]</td>
+											<td>$row[fname]</td>
+											<td>$row[lname]</td>
+											<td>$row[cust_type]</td>
+											<td><form action="empCustEdit.php" method="post"><button name="editEmail" 
+											       value="$row[email]" type="submit">edit</button></form></td>
+											<td><form action="empCustDelete.php" method="post"><button name="editEmail" 
+											       value="$row[email]" type="submit">delete</button></form></td>
+										</tr>
+								EOF;
 
-						}
-					?>
-				</table>
-				
-			</div>
+							}
+						?>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

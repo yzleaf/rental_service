@@ -2,6 +2,7 @@
 	require_once ('./php_operation/common.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
+	include ('./php_operation/conn.php');
 ?>
 
 
@@ -61,6 +62,7 @@
 				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
+				<a href="empClass.php" class="list-group-item">Class Message</a>
 				<a href="empCoupon.php" class="list-group-item active">Coupon Message</a>
 				<?php if ($user_type == 'ADMIN'): ?>
 					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
@@ -69,13 +71,39 @@
 		</div>
 		<div class="col-md-10">
 			<div class="row" style="margin-bottom: 20px;">
-				<a href="empCoupon.php"><button class="col-md-4 btn btn-primary">All</button></a>
-				<a href="empCouponIndi.php"><button class="col-md-4 btn btn-primary">Individual Coupon</button></a>
+				<div class="col-md-2"></div>
+				<a href="empCoupon.php"><button class="col-md-4 btn btn-primary">Individual Coupon</button></a>
 				<a href="empCouponCorp.php"><button class="col-md-4 btn btn-primary active">Corporate Discount</button></a>
+				<div class="col-md-2"></div>
 			</div>
 			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, perferendis, nisi. Distinctio voluptatibus maxime adipisci iusto reprehenderit quasi aperiam fugiat qui. Recusandae illum et doloribus quae natus numquam, incidunt animi.
-				Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eaque, vel eligendi, ullam laborum aliquam perspiciatis? Et laboriosam quibusdam asperiores minima corporis vitae placeat! Dolore quidem nostrum explicabo iure, id ipsa.
+				<div class="row" style="margin-bottom: 20px;">
+			<div class="row" style="margin-bottom: 20px;">
+				<?php include('./php_operation/empCouponSql.php') ?>
+				<table class="table table-striped" style="margin-top: 30px;">
+					<tr>
+						<th>Corp_reg_no</th>
+						<th>Corp_name</th>
+						<th>Corp_dis</th>
+						<th></th>
+					</tr>
+					<?php 
+						$allCorp = allCorp($conn);
+						while ($row = mysqli_fetch_array($allCorp)) {
+							print <<< EOF
+									<tr>
+										<td>$row[corp_reg_no]</td>
+										<td>$row[corp_name]</td>
+										<td>$row[corp_dis]</td>
+										<td><form action="empCouponEdit.php" method="post"><button name="editCoupon" 
+										       value="$row[corp_reg_no]" type="submit">edit</button></form></td>
+									</tr>
+							EOF;
+
+						}
+					?>
+				</table>
+			</div>
 			</div>
 		</div>
 	</div>

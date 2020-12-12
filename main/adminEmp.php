@@ -60,6 +60,7 @@
 				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
+				<a href="empClass.php" class="list-group-item">Class Message</a>
 				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
 				<?php if ($user_type == 'ADMIN'): ?>
 					<a href="adminEmp.php" class="list-group-item active">Employee Message</a>

@@ -60,6 +60,7 @@
 				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
+				<a href="empClass.php" class="list-group-item">Class Message</a>
 				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
 				<?php if ($user_type == 'ADMIN'): ?>
 					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
@@ -73,8 +74,40 @@
 				<a href="empRentEnd.php"><button class="col-md-4 btn btn-primary active">End Order</button></a>
 			</div>
 			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, perferendis, nisi. Distinctio voluptatibus maxime adipisci iusto reprehenderit quasi aperiam fugiat qui. Recusandae illum et doloribus quae natus numquam, incidunt animi.
-				Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eaque, vel eligendi, ullam laborum aliquam perspiciatis? Et laboriosam quibusdam asperiores minima corporis vitae placeat! Dolore quidem nostrum explicabo iure, id ipsa.
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<form action="#" method="post">
+						<div class="form-group">
+							<label for="">service_id</label>
+							<input type="text" class="form-control" id="service_id" name="service_id" value="#" required="required">
+						</div>
+						<div class="form-group">
+							<label for="">invoice_id</label>
+							<input type="text" class="form-control" id="invoice_id" name="invoice_id" value="#" required="required">
+						</div>
+						<div class="form-group">
+							<label for="">drop_date</label>
+							<input type="text" class="form-control" id="drop_date" name="drop_date" value="#" required=required>
+						</div>
+						<div class="form-group">
+							<label for="">end_odometer</label>
+							<input type="text" class="form-control" id="end_odometer" name="end_odometer" value="#" required=required>
+						</div>
+						<div class="form-group">
+							<label for="">drop_location_id</label>
+							<input type="text" class="form-control" id="drop_location_id" name="drop_location_id" value="#" required=required>
+						</div>
+						<div class="form-group">
+							<label for="">invoice_date</label>
+							<input type="text" class="form-control" id="invoice_date" name="invoice_date" value="#" required=required>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary btn-block" type="submit" name="submit">End This Rental</button>
+						</div>
+					</form>
+
+				</div>
+				<div class="col-md-2"></div>
 			</div>
 		</div>
 	</div>

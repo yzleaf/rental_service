@@ -61,7 +61,19 @@
 			</div>
 		</div>
 		<div class="col-md-10">
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem dolor nostrum, atque amet animi numquam minima vel accusantium doloremque sit doloribus enim perferendis quasi sint necessitatibus quaerat dolores! Excepturi, beatae!
+			<div class="row" style="margin-bottom: 20px;">
+				<table class="table table-striped" style="margin-top: 30px;">
+					<tr>
+						<th>Service_id</th>
+						<th>Invoice_id</th>
+						<th>User Name</th>
+						<th>status</th>
+						<th>pay</th>
+						<th>detail</th>
+					</tr>
+					
+				</table>
+			</div>
 		</div>
 	</div>
 	<div class="footer">

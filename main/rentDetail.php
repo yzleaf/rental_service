@@ -3,7 +3,14 @@
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	include ('./php_operation/conn.php');
-    include ('./php_operation/empRentSql.php');
+	include ('./php_operation/empRentSql.php');
+	if (!isset($_POST['detail'])) { // whether click the button
+    	$service_id = get_service_id('service_id');
+	} else {
+		$service_id = $_POST['detail'];
+		set_service_id($service_id);
+	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +69,6 @@
 				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
-				<a href="empClass.php" class="list-group-item">Class Message</a>
 				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
 				<?php if ($user_type == 'ADMIN'): ?>
 					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
@@ -76,59 +82,62 @@
 				<a href="empRentEnd.php"><button class="col-md-4 btn btn-primary">End Order</button></a>
 			</div>
 			<div class="row" style="margin-bottom: 20px;">
+				<h4 style="color:#AAAA55;">Basic Informaion</h4>
+				<table class="table table-striped" style="margin-top: 30px;">
+					<?php $service_res = select_detail($conn, $service_id); ?>
+					<tr>
+						<th>Status</th><td><?php echo $service_res['status']?></td>
+					</tr>
+					<tr>
+						<th>Service_id</th><td><?php echo $service_res['service_id']?></td>
+					</tr>
+					<tr>	
+						<th>Invoice_id</th><td><?php echo $service_res['invoice_id']?></td>
+					</tr>
+					<tr>
+						<th>User Name</th><td><?php echo $service_res['email']?></td>
+					</tr>
+					<tr>
+						<th>Pickup Date</th><td><?php echo $service_res['pick_date']?></td>
+					</tr>
+					<tr>
+						<th>Dropoff Date</th><td><?php echo $service_res['drop_date']?></td>
+					</tr>
+					<tr>
+						<th>Start Odometer</th><td><?php echo $service_res['start_odometer']?></td>
+					</tr>
+					<tr>
+						<th>End Odometer</th><td><?php echo $service_res['end_odometer']?></td>
+					</tr>
+					<tr>
+						<th>Limit</th><td><?php echo $service_res['d_limit']?></td>
+					</tr>
+					<tr>
+						<th>Vin</th><td><?php echo $service_res['vin']?></td>
+					</tr>
+					<tr>
+						<th>Pickup Location id</th><td><?php echo $service_res['pick_location_id']?></td>
+					</tr>
+					<tr>
+						<th>Dropoff Location id</th><td><?php echo $service_res['drop_location_id']?></td>
+					</tr>
+					<tr>
+						<th>Invoice Date</th><td><?php echo $service_res['invoice_date']?></td>
+					</tr>
+					<tr>
+						<th>Invoice Amount</th><td><?php echo $service_res['invoice_amount']?></td>
+					</tr>
+
+				</table>
+				<h4 style="color:#AAAA55;">Payment Informaion</h4>
 				<table class="table table-striped" style="margin-top: 30px;">
 					<tr>
-						<th>Service_id</th>
-						<th>Invoice_id</th>
-						<th>status</th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
+						<th>Payment_id</th>
+						<th>Payment Date</th>
+						<th>Payment Method</th>
+						<th>Payment Card Number</th>
+	
 					</tr>
-					<?php 
-						$allRent = allRent($conn);
-						while ($row = mysqli_fetch_array($allRent)) {
-							print <<< EOF
-									<tr>
-										<td>$row[service_id]</td>
-										<td>$row[invoice_id]</td>
-										<td>$row[status]</td>
-										<td><form action="#" method="post" onsubmit="return checkPay('$row[status]');">
-										    <button name="pay" 
-										       value="#" type="submit">pay</button></form></td>
-										<td><form action="rentDetail.php" method="post"><button name="detail" 
-										       value="$row[service_id]" type="submit">detail</button></form></td>
-										<td><form action="rentEdit.php" method="post"><button name="edit" 
-										       value="$row[service_id]" type="submit">edit</button></form></td>		
-										<td><form action="rentDelete.php" method="post" onsubmit="return checkDelete('$row[status]');">
-										    <button name="delete" 
-										       value="$row[service_id]" type="submit"">delete</button></form></td>
-									</tr>
-									
-							EOF;
-						}
-						
-					?>
-					<script>
-						function checkPay(obj) {
-							var status = obj.toString();
-							if (status == "paid") {
-								alert('ALREADY PAID! Cannot pay again');
-								return false;
-							} 
-							return true;
-						}
-
-						function checkDelete(obj) {
-		                    var status = obj.toString();
-							if (status == "unpaid") {
-								alert('UNPAID! Cannot Delete');
-								return false;
-							} 
-							return true;
-						}
-					</script>
 					
 				</table>
 			</div>

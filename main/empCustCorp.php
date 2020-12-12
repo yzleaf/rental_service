@@ -2,6 +2,7 @@
 	require_once ('./php_operation/common.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
+	include ('./php_operation/conn.php');
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +61,7 @@
 				<a href="empCustInfo.php" class="list-group-item active">Customer Message</a>
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
+				<a href="empClass.php" class="list-group-item">Class Message</a>
 				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
 				<?php if ($user_type == 'ADMIN'): ?>
 					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
@@ -73,8 +75,44 @@
 				<a href="empCustCorp.php"><button class="col-md-4 btn btn-primary active">Corporate Customer</button></a>
 			</div>
 			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, perferendis, nisi. Distinctio voluptatibus maxime adipisci iusto reprehenderit quasi aperiam fugiat qui. Recusandae illum et doloribus quae natus numquam, incidunt animi.
-				Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eaque, vel eligendi, ullam laborum aliquam perspiciatis? Et laboriosam quibusdam asperiores minima corporis vitae placeat! Dolore quidem nostrum explicabo iure, id ipsa.
+				<div class="row" style="margin-bottom: 20px;">
+					<div class="col-md-4"></div>
+						<a href="signupCorp.php">
+							<button class="col-md-4 btn btn-primary">Add Corporate Customer</button>
+						</a>	
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<?php include('./php_operation/empCustSql.php') ?>
+					<table class="table table-striped" style="margin-top: 30px;">
+						<tr>
+							<th>Email</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Customer Type</th>
+							<th></th>
+							<th></th>
+						</tr>
+						<?php 
+							$allCorp = allCorp($conn);
+							while ($row = mysqli_fetch_array($allCorp)) {
+								print <<< EOF
+										<tr>
+											<td>$row[email]</td>
+											<td>$row[fname]</td>
+											<td>$row[lname]</td>
+											<td>$row[cust_type]</td>
+											<td><form action="empCustEdit.php" method="post"><button name="editEmail" 
+											       value="$row[email]" type="submit">edit</button></form></td>
+											<td><form action="empCustDelete.php" method="post"><button name="editEmail" 
+											       value="$row[email]" type="submit">delete</button></form></td>
+										</tr>
+								EOF;
+
+							}
+						?>
+					</table>
+					
+				</div>
 			</div>
 		</div>
 	</div>

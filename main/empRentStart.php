@@ -60,6 +60,7 @@
 				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
+				<a href="empClass.php" class="list-group-item">Class Message</a>
 				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
 				<?php if ($user_type == 'ADMIN'): ?>
 					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
@@ -73,8 +74,57 @@
 				<a href="empRentEnd.php"><button class="col-md-4 btn btn-primary">End Order</button></a>
 			</div>
 			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, perferendis, nisi. Distinctio voluptatibus maxime adipisci iusto reprehenderit quasi aperiam fugiat qui. Recusandae illum et doloribus quae natus numquam, incidunt animi.
-				Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eaque, vel eligendi, ullam laborum aliquam perspiciatis? Et laboriosam quibusdam asperiores minima corporis vitae placeat! Dolore quidem nostrum explicabo iure, id ipsa.
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<form action="./php_operation/startRent.php" method="post">
+						<div class="form-group">
+							<label for="">service_id</label>
+							<input type="text" class="form-control" id="service_id" name="service_id" value="" required="required">
+						</div>
+						<div class="form-group">
+							<label for="">user_name</label>
+							<input type="text" class="form-control" id="user_name" name="user_name" value="" required="required">
+						</div>
+						<div class="form-group">
+							<label for="">pick_date</label>
+							<input type="text" class="form-control" id="pick_date" name="pick_date" value="" required=required>
+						</div>
+						<div class="form-group" hidden=hidden>
+							<label for="">drop_date</label>
+							<input type="text" class="form-control" id="drop_date" name="drop_date" value="2999-01-01" required=required readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label for="">start_odometer</label>
+							<input type="text" class="form-control" id="start_odometer" name="start_odometer" value="" required=required>
+						</div>
+						<div class="form-group" hidden=hidden>
+							<label for="">end_odometer</label>
+							<input type="text" class="form-control" id="end_odometer" name="end_odometer" value="9999" required=required readonly="readonly">
+						</div>
+						<div class="form-group">
+							<label for="">d_limit</label>
+							<input type="text" class="form-control" id="d_limit" name="d_limit" value="NULL">
+						</div>
+						<div class="form-group">
+							<label for="">vin</label>
+							<input type="text" class="form-control" id="vin" name="vin" value="" required=required>
+						</div>
+						<div class="form-group">
+							<label for="">pick_location_id</label>
+							<input type="text" class="form-control" id="pick_location_id" name="pick_location_id" value="" required=required>
+						</div>
+						<div class="form-group" hidden=hidden>
+							<label for="">drop_location_id</label>
+							<input type="text" class="form-control" id="drop_location_id" name="drop_location_id" value="9999" required=required readonly="readonly">
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary btn-block" type="submit" name="submit">Start New Rental</button>
+						</div>
+					</form>
+
+				</div>
+				<div class="col-md-2"></div>
+				
 			</div>
 		</div>
 	</div>

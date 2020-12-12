@@ -3,7 +3,6 @@
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
 	include ('./php_operation/conn.php');
-    include ('./php_operation/empRentSql.php');
 ?>
 
 <!DOCTYPE html>
@@ -58,11 +57,11 @@
 	<div class="container">
 		<div class="col-md-2">
 			<div class="list-group side-bar">
-				<a href="empRent.php" class="list-group-item active">Rent</a>
+				<a href="empRent.php" class="list-group-item">Rent</a>
 				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
 				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
 				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
-				<a href="empClass.php" class="list-group-item">Class Message</a>
+				<a href="empClass.php" class="list-group-item active">Class Message</a>
 				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
 				<?php if ($user_type == 'ADMIN'): ?>
 					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
@@ -70,67 +69,27 @@
 			</div>
 		</div>
 		<div class="col-md-10">
-			<div class="row" style="margin-bottom: 20px;">
-				<a href="empRent.php"><button class="col-md-4 btn btn-primary active">All</button></a>
-				<a href="empRentStart.php"><button class="col-md-4 btn btn-primary">Start New</button></a>
-				<a href="empRentEnd.php"><button class="col-md-4 btn btn-primary">End Order</button></a>
-			</div>
-			<div class="row" style="margin-bottom: 20px;">
-				<table class="table table-striped" style="margin-top: 30px;">
-					<tr>
-						<th>Service_id</th>
-						<th>Invoice_id</th>
-						<th>status</th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</tr>
-					<?php 
-						$allRent = allRent($conn);
-						while ($row = mysqli_fetch_array($allRent)) {
-							print <<< EOF
-									<tr>
-										<td>$row[service_id]</td>
-										<td>$row[invoice_id]</td>
-										<td>$row[status]</td>
-										<td><form action="#" method="post" onsubmit="return checkPay('$row[status]');">
-										    <button name="pay" 
-										       value="#" type="submit">pay</button></form></td>
-										<td><form action="rentDetail.php" method="post"><button name="detail" 
-										       value="$row[service_id]" type="submit">detail</button></form></td>
-										<td><form action="rentEdit.php" method="post"><button name="edit" 
-										       value="$row[service_id]" type="submit">edit</button></form></td>		
-										<td><form action="rentDelete.php" method="post" onsubmit="return checkDelete('$row[status]');">
-										    <button name="delete" 
-										       value="$row[service_id]" type="submit"">delete</button></form></td>
-									</tr>
-									
-							EOF;
-						}
-						
-					?>
-					<script>
-						function checkPay(obj) {
-							var status = obj.toString();
-							if (status == "paid") {
-								alert('ALREADY PAID! Cannot pay again');
-								return false;
-							} 
-							return true;
-						}
-
-						function checkDelete(obj) {
-		                    var status = obj.toString();
-							if (status == "unpaid") {
-								alert('UNPAID! Cannot Delete');
-								return false;
-							} 
-							return true;
-						}
-					</script>
-					
-				</table>
+			<div>
+				<div class="row" style="margin-bottom: 20px;">
+				<div class="col-md-4"></div>
+					<a href="signup.php">
+						<button class="col-md-4 btn btn-primary">Add Class</button>
+					</a>	
+				</div>
+				<div class="row" style="margin-bottom: 20px;">
+					<table class="table table-striped" style="margin-top: 30px;">
+						<tr>
+							<th>Class Id</th>
+							<th>Class Name</th>
+							<th>Rental Rate</th>
+							<th>Over Fee</th>
+							<th></th>
+						</tr>
+						<?php 
+							
+						?>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

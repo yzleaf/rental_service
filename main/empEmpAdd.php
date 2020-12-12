@@ -1,7 +1,10 @@
 <?php
+	include ('./php_operation/conn.php');
 	require_once ('./php_operation/common.php');
+	require_once ('./php_operation/customer.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
+	$customer_type = getCookieVal('cookie_ctype');
 ?>
 
 <!DOCTYPE html>
@@ -54,25 +57,26 @@
 		</div>
 	</div>
 	<div class="container">
-		<div class="col-md-2">
-			<div class="list-group side-bar">
-				<a href="empRent.php" class="list-group-item">Rent</a>
-				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
-				<a href="empLocInfo.php" class="list-group-item active">Location Message</a>
-				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
-				<a href="empClass.php" class="list-group-item">Class Message</a>
-				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
-				<?php if ($user_type == 'ADMIN'): ?>
-					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
-				<?php endif ?>
-			</div>
+		<div class="container container-small">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<h2>Add Employee</h2>
+			<form action="#" method="post">
+				<div class="form-group">
+					<label for="">user name</label>
+					<input type="text" class="form-control" id="location_id" name="location_id" value="#" required="required">
+				</div>
+				<div class="form-group">
+					<label for="">password</label>
+					<input type="password" class="form-control" id="loc_street" name="loc_street" value="#" required=required>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary btn-block" type="submit" name="submit">Add Emplyee</button>
+				</div>
+			</form>
 		</div>
-		<div class="col-md-10">
-			<div>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, perferendis, nisi. Distinctio voluptatibus maxime adipisci iusto reprehenderit quasi aperiam fugiat qui. Recusandae illum et doloribus quae natus numquam, incidunt animi.
-				Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eaque, vel eligendi, ullam laborum aliquam perspiciatis? Et laboriosam quibusdam asperiores minima corporis vitae placeat! Dolore quidem nostrum explicabo iure, id ipsa.
-			</div>
-		</div>
+		<div class="col-md-3"></div>	
+	</div>
 	</div>
 	<div class="footer">
 		WOW | qwert@wow.com | 358-224-6785
