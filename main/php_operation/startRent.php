@@ -17,7 +17,12 @@
 	$rentInfo['drop_date'] = $_POST['drop_date'];
 	$rentInfo['start_odometer']= $_POST['start_odometer'];
 	$rentInfo['end_odometer'] = $_POST['end_odometer'];
-	$rentInfo['d_limit'] = $_POST['d_limit'];
+	if ($_POST['d_limit'] == "No") {
+		$d_limit = 9999;
+		$rentInfo['d_limit'] = $d_limit;
+	} else {
+		$rentInfo['d_limit'] = $_POST['d_limit'];
+	}
 	$rentInfo['vin'] = $_POST['vin'];
 	$rentInfo['pick_location_id'] = $_POST['pick_location_id'];
 	$rentInfo['drop_location_id'] = $_POST['drop_location_id'];

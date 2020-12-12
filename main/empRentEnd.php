@@ -102,6 +102,10 @@
 							<input type="text" class="form-control" id="invoice_date" name="invoice_date" value="" required=required>
 						</div>
 						<div class="form-group">
+							<label for="">coupon_id</label>
+							<input type="text" class="form-control" id="coupon_id" name="coupon_id" value="">
+						</div>
+						<div class="form-group">
 							<button class="btn btn-primary btn-block" type="submit" name="submit">End This Rental</button>
 						</div>
 					</form>

@@ -72,7 +72,7 @@
 		<div class="col-md-10">
 			<h2>Pay</h2>
 			<div class="row">
-				<form action="#" method="post">
+				<form action="#" method="post" onsubmit="return checkPay('remain','pay_amount');">
 					<div class="col-md-3"></div>
 					<div class="col-md-6">
 						<div class="form-group">
@@ -84,24 +84,34 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="">Pay id</label>
-							<input type="text" class="form-control" id="model" name="pay_id" value="">
+							<label for="">You still should pay</label>
+							<input type="text" class="form-control" id="remain" name="remain" value="">
 						</div>
 						<div class="form-group">
 							<label for="">Card Number</label>
-							<input type="text" class="form-control" id="" name="pay_card_no" value="" required=required>
+							<input type="text" class="form-control" id="pay_card_no" name="pay_card_no" value="" required=required>
 						</div>
 						<div class="form-group">
 							<label for="">Pay Amount</label>
-							<input type="text" class="form-control" id="model" name="pay_amount" value="" required=required>
+							<input type="text" class="form-control" id="pay_amount" name="pay_amount" value="" required=required>
 						</div>
 						<div class="form-group">
 							<button class="btn btn-primary btn-block" type="submit" name="submit" value="add">Pay</button>
 						</div>
 					</div>
 					<div class="col-md-3"></div>
-					
 				</form>
+				<script>
+					function checkPay(obj1, obj2) {
+						var remain = document.getElementById(obj1).value;
+						var pay_amount = document.getElementById(obj2).value;
+						if (pay_amount > remain) {
+							alert('the pay_amount is larger than you should pay!');
+							return false;
+						}
+						return true;
+					}
+				</script>
 			</div>
 			
 		</div>

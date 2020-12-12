@@ -103,7 +103,7 @@
 						</div>
 						<div class="form-group">
 							<label for="">d_limit</label>
-							<input type="text" class="form-control" id="d_limit" name="d_limit" value="NULL">
+							<input type="text" class="form-control" id="d_limit" name="d_limit" value="No">
 						</div>
 						<div class="form-group">
 							<label for="">vin</label>

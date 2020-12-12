@@ -23,7 +23,35 @@
 	
 	$rentInfo['invoice_id'] = $_POST['service_id'];
 	$rentInfo['invoice_date'] = $_POST['invoice_date'];
+    
+    $cust_id = $res['cust_id'];
+    $cust_type = $res['cust_type'];
+
+    $coupon_id = $_POST['coupon_id'];
+    
+    if ($cust_type == "I") {
+    	if ($coupon_id=="") {
+	    	$rentInfo['discount'] = 1;
+	    } else {
+	    	$rentInfo['discount'] = select_coupon_discount($conn, $coupon_id);
+	    }
+    } else {
+    	$rentInfo['discount'] = select_corp_discount($conn, $cust_id);
+    }
 
 	insert_invoice($conn, $rentInfo);
 
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
