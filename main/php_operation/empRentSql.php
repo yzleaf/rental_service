@@ -21,6 +21,21 @@
 		return $check;
 	}
 
+	function select_coupon_id($conn, $cust_id) {
+		$check = mysqli_query($conn, "SELECT coupon_id
+    		                          FROM individual
+    		                          WHERE cust_id = '$cust_id'
+    		                          ");
+    	$result = mysqli_fetch_array($check)['coupon_id'];
+	    if ($result) {
+	        return $result;
+	    }
+	    else {
+	        return 'F';
+	        exit;
+	    }
+	}
+
 	function select_coupon_discount($conn, $coupon_id) {
 		$check = mysqli_query($conn, "SELECT indi_dis
     		                          FROM indi_coupon
@@ -97,6 +112,18 @@
 	    // ----- End -----
 
 	    mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
+
+	    // update invoice with discount
+	    $invoice_update_res = with_discount($conn, $rentInfo);
+
+		if ($invoice_update_res) { // success 
+			$result = 'T';  
+		}
+		else {
+	        $result = 'F';
+	        //exit(mysqli_error($conn));
+	        print_r(mysqli_error($conn));
+	    }
 
 		set_flag_execute($result);
 		// redict Status Result
@@ -232,7 +259,7 @@
 
         // update invoice
         $invoice_update_res = mysqli_query($conn, "UPDATE invoice 
-									               SET invoice_date=date'$rentInfo[invoice_date]', 
+									               SET invoice_date=date'$rentInfo[invoice_date]'
 									               WHERE invoice_id='$rentInfo[invoice_id]'
 									       ");
 		if ($invoice_update_res) { // success 
@@ -260,12 +287,49 @@
 	        print_r(mysqli_error($conn));
 	    }
 
+	    //update customer indi_coupon if needed
+	    if ($rentInfo['cust_type'] == "I") {
+	    	$indi_update_res = mysqli_query($conn, "UPDATE individual
+									               SET coupon_id='$rentInfo[coupon_id]'
+									               WHERE cust_id='$rentInfo[cust_id]'
+									       ");
+		    if ($indi_update_res) { // success 
+				$result = 'T';  
+			}
+			else {
+			    mysqli_query($conn, "ROLLBACK");
+		        $result = 'F';
+		        //exit(mysqli_error($conn));
+		        print_r(mysqli_error($conn));
+		    }
+	    }
+
         mysqli_commit($conn); 
 	    // ----- End -----
 	    mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
 
 	    // update invoice with discount
-	    $invoice_amount_res = mysqli_query($conn, "SELECT invoice_amount
+	    $invoice_update_res = with_discount($conn, $rentInfo);
+
+		if ($invoice_update_res) { // success 
+			$result = 'T';  
+		}
+		else {
+	        $result = 'F';
+	        //exit(mysqli_error($conn));
+	        print_r(mysqli_error($conn));
+	    }
+
+		set_flag_execute($result);
+		// redict Status Result
+
+		header('location: ../totalCheck.php');
+
+	}
+
+
+	function with_discount($conn, $rentInfo) {
+		$invoice_amount_res = mysqli_query($conn, "SELECT invoice_amount
 									               FROM invoice
 									               WHERE invoice_id='$rentInfo[invoice_id]'");
 	    $invoice_amount = mysqli_fetch_array($invoice_amount_res)['invoice_amount'];
@@ -283,22 +347,11 @@
 									               SET remain_amount='$real_amount' 
 									               WHERE invoice_id='$rentInfo[invoice_id]';");
 
-
-		if ($invoice_update_res) { // success 
-			$result = 'T';  
-		}
-		else {
-	        $result = 'F';
-	        //exit(mysqli_error($conn));
-	        print_r(mysqli_error($conn));
-	    }
-
-
-
-		set_flag_execute($result);
-		// redict Status Result
-
-		header('location: ../totalCheck.php');
+        // print_r("UPDATE invoice 
+								// 	               SET remain_amount='$real_amount' 
+								// 	               WHERE invoice_id='$rentInfo[invoice_id]';");
+        // die();
+        return $invoice_update_res;
 
 	}
 

@@ -11,6 +11,15 @@
 		set_service_id($service_id);
 	}
 	$service_res = select_detail($conn, $service_id);
+
+	$cust_id = $service_res['cust_id'];
+    $cust_type = $service_res['cust_type'];
+    $coupon_id = select_coupon_id($conn, $cust_id);
+    if ($cust_type == "I") {
+	    $service_res['discount'] = select_coupon_discount($conn, $coupon_id);
+    } else {
+    	$service_res['discount'] = select_corp_discount($conn, $cust_id);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -124,6 +133,10 @@
 									<div class="form-group">
 										<label for="">dropoff location id</label>
 										<input type="text" class="form-control" id="drop_location_id" name="drop_location_id" value="<?php echo $service_res['drop_location_id'] ?>" required=required>
+									</div>
+									<div class="form-group">
+										<label for="">discount</label>
+										<input type="text" class="form-control" id="discount" name="discount" value="<?php echo $service_res['discount'] ?>" readonly=readonly>
 									</div>
 								</div>
 								<div class="col-md-6">

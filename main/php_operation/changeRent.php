@@ -9,6 +9,8 @@
 	    exit('Error Access');
 	}
 
+	$res = select_detail($conn, $_POST['service_id']);
+
     $rentInfo = [];
 	$rentInfo['service_id'] = $_POST['service_id'];
 	$rentInfo['pick_date'] = $_POST['pick_date'];
@@ -24,6 +26,11 @@
 	$rentInfo['invoice_date'] = $_POST['invoice_date'];
 	$rentInfo['invoice_amount'] = $_POST['invoice_amount'];
 	$rentInfo['invoice_status'] = $_POST['invoice_status'];
+
+	$rentInfo['discount'] = $_POST['discount'];
+
+    // print_r($rentInfo);
+    // die();
 
 	change_service($conn, $rentInfo);
 
