@@ -43,7 +43,7 @@
 						<li></li>
 					<?php endif ?>
 					<?php if ($user_type == 'CUSTOMER'): ?>
-						<li><a href="custProfile.php">Customer</a></li>
+						<li class="active"><a href="custProfile.php">Customer</a></li>
 					<?php endif ?>
 					<?php if ($user_type == 'EMPLOYEE' || $user_type == 'ADMIN'): ?>
 						<li class="active"><a href="empRent.php">Employee</a></li>
@@ -67,17 +67,29 @@
 	</div>
 	<div class="container">
 		<div class="col-md-2">
-			<div class="list-group side-bar">
-				<a href="empRent.php" class="list-group-item active">Rent</a>
-				<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
-				<a href="empLocInfo.php" class="list-group-item">Location Message</a>
-				<a href="empCarInfo.php" class="list-group-item">Car Message</a>
-				<a href="empClass.php" class="list-group-item">Class Message</a>
-				<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
-				<?php if ($user_type == 'ADMIN'): ?>
-					<a href="adminEmp.php" class="list-group-item">Employee Message</a>
-				<?php endif ?>
-			</div>
+			<?php if (empty($user_name)): ?>
+				<li></li>
+			<?php endif ?>
+			<?php if ($user_type == 'CUSTOMER'): ?>
+				<div class="list-group side-bar">
+					<a href="custProfile.php" class="list-group-item">Profile</a>
+					<a href="custOrder.php" class="list-group-item active">My Order</a>
+				</div>
+			<?php endif ?>
+			<?php if ($user_type == 'EMPLOYEE' || $user_type == 'ADMIN'): ?>
+				<div class="list-group side-bar">
+					<a href="empRent.php" class="list-group-item active">Rent</a>
+					<a href="empCustInfo.php" class="list-group-item">Customer Message</a>
+					<a href="empLocInfo.php" class="list-group-item">Location Message</a>
+					<a href="empCarInfo.php" class="list-group-item">Car Message</a>
+					<a href="empClass.php" class="list-group-item">Class Message</a>
+					<a href="empCoupon.php" class="list-group-item">Coupon Message</a>
+					<?php if ($user_type == 'ADMIN'): ?>
+						<a href="adminEmp.php" class="list-group-item">Employee Message</a>
+					<?php endif ?>
+				</div>
+			<?php endif ?>
+			
 		</div>
 		<div class="col-md-10">
 			<h2>Pay</h2>
