@@ -62,8 +62,8 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8" style="color: #666">
 				<div>
-					Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore sint illum omnis blanditiis minima dolor delectus sit at, id mollitia iure nulla dignissimos nam amet excepturi sapiente ratione expedita tempora?
-			    </div>
+				Our car rental offices are located all over the country, aiming to provide people with the most convenient car rental service. It is expected that more locations and vehicles will be deployed in the future to benefit everyone	
+				</div>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

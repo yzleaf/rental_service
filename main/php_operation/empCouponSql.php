@@ -32,6 +32,7 @@
 	function allIndi($conn) {
 		$check = mysqli_query($conn, "SELECT coupon_id, indi_dis, start_date, end_date 
 			                          FROM indi_coupon
+									  WHERE coupon_id<>'9999'
                               ");
 		return $check;
 	}

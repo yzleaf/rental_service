@@ -218,19 +218,30 @@ function delete_indi($conn, $cust_name) {
         exit(mysqli_error($conn));
     }
 
-    // 1: check whether there is unfinished or unpaid invoice
+    // 1: get invoice_id
+    $check = mysqli_query($conn, "SELECT invoice_id FROM invoice WHERE cust_id='$cust_id'");
+    $result = mysqli_fetch_array($check);
+    if ($result) {
+        $invoice_id = $result['invoice_id'];
+    }
+    else {
+        return 'F1';
+        exit(mysqli_error($conn));
+    }
+
+    // 2: check whether there is unfinished or unpaid invoice
     // if yes, can't delete, customer should pay all invoices
     $check = mysqli_query($conn, "SELECT invoice_id FROM invoice
                                   WHERE cust_id='$cust_id' and status<>'paid'");
     if (mysqli_fetch_array($check)) {
-        return 'F1';
+        return 'F2';
     }
 
 
     // ----- Begin -----
     mysqli_begin_transaction($conn);
     
-    // 2: delete payment table
+    // 3: delete payment table
     $sql_delete_payment = "DELETE FROM payment 
                            WHERE invoice_id IN (SELECT invoice_id FROM invoice
                                                 WHERE cust_id='$cust_id')
@@ -240,11 +251,11 @@ function delete_indi($conn, $cust_name) {
     }
     else {
         mysqli_query($conn, "ROLLBACK");
-        return 'F2';
+        return 'F3';
         exit(mysqli_error($conn));
     }
 
-    // 3: delete invoice table
+    // 4: delete invoice table
     $sql_delete_invoice = "DELETE FROM invoice 
                            WHERE cust_id='$cust_id'
                           ";   
@@ -253,11 +264,24 @@ function delete_indi($conn, $cust_name) {
     }
     else {
         mysqli_query($conn, "ROLLBACK");
-        return 'F3';
+        return 'F4';
         exit(mysqli_error($conn));
     }
 
-    // 4: delete in user_password table
+    // 5: delete service table
+    $sql_delete_service = "DELETE FROM services 
+                           WHERE service_id='$invoice_id'
+                          ";   
+    $result = mysqli_query($conn, $sql_delete_invoice);
+    if ($result) { // success   
+    }
+    else {
+        mysqli_query($conn, "ROLLBACK");
+        return 'F5';
+        exit(mysqli_error($conn));
+    }
+
+    // 6: delete in user_password table
     $sql_delete_user_pw = "DELETE 
                            FROM user_password 
                            WHERE u_id='$cust_id'";
@@ -266,11 +290,11 @@ function delete_indi($conn, $cust_name) {
     }
     else {
         mysqli_query($conn, "ROLLBACK");
-        return 'F4';
+        return 'F6';
         exit(mysqli_error($conn));
     }
 
-    // 5: delete in individual table
+    // 7: delete in individual table
     $sql_delete_individual = "DELETE 
                               FROM individual 
                               WHERE cust_id='$cust_id'";
@@ -279,11 +303,11 @@ function delete_indi($conn, $cust_name) {
     }
     else {
         mysqli_query($conn, "ROLLBACK");
-        return 'F5';
+        return 'F7';
         exit(mysqli_error($conn));
     }
 
-    // 6: delete in customer table
+    // 8: delete in customer table
     $sql_delete_customer = "DELETE 
                             FROM customer
                             WHERE cust_id='$cust_id'";
@@ -292,7 +316,7 @@ function delete_indi($conn, $cust_name) {
     }
     else {
         mysqli_query($conn, "ROLLBACK");
-        return 'F6';
+        return 'F8';
         exit(mysqli_error($conn));
     }
 
@@ -314,14 +338,73 @@ function delete_corp($conn, $cust_name) {
         $cust_id = $result['u_id'];
     }
     else {
+        return 'F0';
+        exit(mysqli_error($conn));
+    }
+
+    // 1: get invoice_id
+    $check = mysqli_query($conn, "SELECT invoice_id FROM invoice WHERE cust_id='$cust_id'");
+    $result = mysqli_fetch_array($check);
+    if ($result) {
+        $invoice_id = $result['invoice_id'];
+    }
+    else {
         return 'F1';
         exit(mysqli_error($conn));
+    }
+
+    // 2: check whether there is unfinished or unpaid invoice
+    // if yes, can't delete, customer should pay all invoices
+    $check = mysqli_query($conn, "SELECT invoice_id FROM invoice
+                                  WHERE cust_id='$cust_id' and status<>'paid'");
+    if (mysqli_fetch_array($check)) {
+        return 'F2';
     }
 
     // ----- Begin -----
     mysqli_begin_transaction($conn);
 
-    // 1: delete in user_password table
+    // 3: delete payment table
+    $sql_delete_payment = "DELETE FROM payment 
+                           WHERE invoice_id IN (SELECT invoice_id FROM invoice
+                                                WHERE cust_id='$cust_id')
+                          ";   
+    $result = mysqli_query($conn, $sql_delete_payment);
+    if ($result) { // success   
+    }
+    else {
+        mysqli_query($conn, "ROLLBACK");
+        return 'F3';
+        exit(mysqli_error($conn));
+    }
+
+    // 4: delete invoice table
+    $sql_delete_invoice = "DELETE FROM invoice 
+                           WHERE cust_id='$cust_id'
+                          ";   
+    $result = mysqli_query($conn, $sql_delete_invoice);
+    if ($result) { // success   
+    }
+    else {
+        mysqli_query($conn, "ROLLBACK");
+        return 'F4';
+        exit(mysqli_error($conn));
+    }
+
+    // 5: delete service table
+    $sql_delete_service = "DELETE FROM services 
+                           WHERE service_id='$invoice_id'
+                          ";   
+    $result = mysqli_query($conn, $sql_delete_invoice);
+    if ($result) { // success   
+    }
+    else {
+        mysqli_query($conn, "ROLLBACK");
+        return 'F5';
+        exit(mysqli_error($conn));
+    }
+
+    // 6: delete in user_password table
     $sql_delete_user_pw = "DELETE 
                            FROM user_password 
                            WHERE u_id='$cust_id'";
@@ -329,13 +412,12 @@ function delete_corp($conn, $cust_name) {
     if ($result) { // success   
     }
     else {
-        print_r(mysqli_error($conn));
         mysqli_query($conn, "ROLLBACK");
-        return 'F2';
+        return 'F6';
         exit(mysqli_error($conn));
     }
 
-    // 2: delete in corporate table
+    // 7: delete in corporate table
     $sql_delete_corporate = "DELETE 
                              FROM corporate 
                              WHERE cust_id='$cust_id'";
@@ -344,13 +426,12 @@ function delete_corp($conn, $cust_name) {
 
     }
     else {
-        print_r(mysqli_error($conn));
         mysqli_query($conn, "ROLLBACK");
-        return 'F3';
+        return 'F7';
         exit(mysqli_error($conn));
     }
 
-    // 3: delete in customer table
+    // 8: delete in customer table
     $sql_delete_customer = "DELETE 
                             FROM customer
                             WHERE cust_id='$cust_id'";
@@ -360,7 +441,7 @@ function delete_corp($conn, $cust_name) {
     else {
         print_r(mysqli_error($conn));
         mysqli_query($conn, "ROLLBACK");
-        return 'F4';
+        return 'F8';
         exit(mysqli_error($conn));
     }
 
