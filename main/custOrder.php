@@ -2,6 +2,8 @@
 	require_once ('./php_operation/common.php');
 	$user_name = getCookieVal('cookie_uname');
 	$user_type = getCookieVal('cookie_utype');
+	include ('./php_operation/conn.php');
+    require_once ('./php_operation/empRentSql.php');
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +73,27 @@
 						<th>pay</th>
 						<th>detail</th>
 					</tr>
-					
+					<?php 
+						$allRent_cust = allRent_cust($conn, $user_name);
+						while ($row = mysqli_fetch_array($allRent_cust)) {
+							print <<< EOF
+									<tr>
+										<td>$row[service_id]</td>
+										<td>$row[invoice_id]</td>
+										<td>$user_name</td>
+										<td>$row[status]</td>
+										<td><form action="empPay.php" method="post" onsubmit="return checkPay('$row[status]');">
+										    <button name="pay" 
+										       value="$row[invoice_id]" type="submit">pay</button></form></td>
+										<td><form action="rentDetail.php" method="post"><button name="detail" 
+										       value="$row[service_id]" type="submit">detail</button></form></td>
+									
+									</tr>
+									
+							EOF;
+						}
+						
+					?>
 				</table>
 			</div>
 		</div>

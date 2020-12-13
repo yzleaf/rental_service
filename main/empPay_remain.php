@@ -5,15 +5,12 @@
 	include ('./php_operation/conn.php');
 	include ('./php_operation/db_pay.php');
 	
-	// determine which invoice id is to be edited
-	if (!isset($_POST['pay'])) { // whether click the button
-    	$invoice_id = invoice_id_get_session();
-	} else {
-		$invoice_id = $_POST['pay'];
-		invoice_id_set_session($invoice_id);
-	}
-
+	$flag_exe = get_session_value('session_flag');
+	session_commit();
+	
+	$invoice_id = invoice_id_get_session();
 	$pay_sq_res = specific_remain_amount($conn, $invoice_id);
+	
 ?>
 
 <!DOCTYPE html>
@@ -81,6 +78,22 @@
 		</div>
 		<div class="col-md-10">
 			<h2>Pay</h2>
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+				<?php if ($flag_exe == 'T'): ?>
+					<div class="alert alert-success" role="alert">
+						<h3>Last Payment Success!</h3>
+					</div>
+				<?php endif ?>
+				<?php if ($flag_exe == 'F'): ?>
+					<div class="alert alert-danger" role="alert">
+						<h3>Last Payment Fail!</h3>
+					</div>
+				<?php endif ?>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
 			<div class="row">
 				<form action="./php_operation/empPay_process.php" method="post" onsubmit="return checkPay('remain','pay_amount');">
 					<div class="col-md-3"></div>

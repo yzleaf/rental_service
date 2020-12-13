@@ -107,6 +107,17 @@ function class_id_get_session() {
     return $_SESSION['class_id'];
 }
 
+function invoice_id_set_session($invoice_id) {
+    session_start();
+    $_SESSION['invoice_id'] = $invoice_id;
+}
+
+function invoice_id_get_session() {
+    session_start();
+    return $_SESSION['invoice_id'];
+}
+
+
 function loc_state_set_session($loc) {
     session_start();
     // store session data

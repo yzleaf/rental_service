@@ -18,8 +18,7 @@
 	$rentInfo['start_odometer']= $_POST['start_odometer'];
 	$rentInfo['end_odometer'] = $_POST['end_odometer'];
 	if ($_POST['d_limit'] == "No") {
-		$d_limit = 9999;
-		$rentInfo['d_limit'] = $d_limit;
+		$rentInfo['d_limit'] = 9999;
 	} else {
 		$rentInfo['d_limit'] = $_POST['d_limit'];
 	}
@@ -33,6 +32,9 @@
 	$rentInfo['status'] = "unfinished";
 
 
-	insert_service($conn, $rentInfo);
+	$result = insert_service($conn, $rentInfo);
 
+	set_flag_execute($result);
+	// redict Status Result
+	header('location: ../totalCheck.php');
 ?>

@@ -65,7 +65,7 @@ if ($cust_type == 'I') { // individual
     $ins_cmp_name = $_POST['iname'];
     $ins_num = $_POST['inum'];
     
-    $sql_insert_sub_customer = "INSERT INTO individual VALUES('$cust_id','$d_licence_num', '$ins_cmp_name', '$ins_num', Null)";
+    $sql_insert_sub_customer = "INSERT INTO individual VALUES('$cust_id','$d_licence_num', '$ins_cmp_name', '$ins_num', '9999')";
 }
 else { // corporate
     $emp_id = $_POST['emp_id'];

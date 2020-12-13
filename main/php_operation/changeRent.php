@@ -32,6 +32,9 @@
     // print_r($rentInfo);
     // die();
 
-	change_service($conn, $rentInfo);
+	$result = change_service($conn, $rentInfo);
+	set_flag_execute($result);
+	// redict Status Result
+	header('location: ../totalCheck.php');
 
 ?>

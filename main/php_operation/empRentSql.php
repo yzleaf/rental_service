@@ -20,6 +20,13 @@
 			                          FROM services a JOIN invoice b ON a.service_id=b.service_id");
 		return $check;
 	}
+	function allRent_cust($conn, $cust_name) {
+		$check = mysqli_query($conn, "SELECT a.service_id, b.invoice_id, b.status 
+									  FROM services a JOIN invoice b ON a.service_id=b.service_id
+									  				  JOIN customer c  ON b.cust_id=c.cust_id
+									  WHERE c.email='$cust_name'");
+		return $check;
+	}
 
 	function select_coupon_id($conn, $cust_id) {
 		$check = mysqli_query($conn, "SELECT coupon_id
@@ -82,12 +89,11 @@
 									      drop_location_id='$rentInfo[drop_location_id]'
 									  WHERE service_id='$rentInfo[service_id]'
                               ");
-		if ($service_update_res) { // success 
-			$result = 'T';  
+		if ($service_update_res) { // success   
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	        
@@ -99,11 +105,10 @@
 									  WHERE invoice_id='$rentInfo[invoice_id]'
                               ");
 		if ($invoice_update_res) { // success  
-			$result = 'T'; 
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 		}
@@ -117,17 +122,14 @@
 	    $invoice_update_res = with_discount($conn, $rentInfo);
 
 		if ($invoice_update_res) { // success 
-			$result = 'T';  
 		}
 		else {
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
 
-		set_flag_execute($result);
-		// redict Status Result
-		header('location: ../totalCheck.php');
+		return 'T';
 
 	}
 
@@ -141,12 +143,11 @@
 		$invoice_delete_res = mysqli_query($conn, "DELETE 
 			                               FROM invoice
 									       WHERE service_id='$service_id'");
-		if ($invoice_delete_res) { // success 
-			$result = 'T';  
+		if ($invoice_delete_res) { // success   
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
@@ -155,11 +156,11 @@
 			                               FROM services
 									       WHERE service_id='$service_id'");
 		if ($service_delete_res) { // success 
-			$result = 'T';  
+			 
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
@@ -169,9 +170,9 @@
 
 	    mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
 
-		set_flag_execute($result);
-		// redict Status Result
-		header('location: ../totalCheck.php');
+		return 'T';
+		// tianjia redirect!!!
+		
 
 	}
 
@@ -181,6 +182,17 @@
 									  WHERE email='$rentInfo[user_name]'");
         $select_cust_id = mysqli_fetch_array($check)['cust_id'];
 
+		$check_car_loc = mysqli_query($conn, "SELECT location_id
+        	                                  FROM vehicle
+        	                                  WHERE vin='$rentInfo[vin]'");
+        $select_car_loc = mysqli_fetch_array($check_car_loc)['location_id'];
+        if ($select_car_loc == $rentInfo['pick_location_id']) {
+        }
+        else {
+        	return 'F';
+        	print_r(mysqli_error($conn));
+		}
+		
 		mysqli_query($conn, "SET AUTOCOMMIT=0"); // not submit automatically
 
 		// ----- Begin -----
@@ -195,28 +207,28 @@
 									               '$rentInfo[drop_location_id]')
 									       ");
 		if ($service_insert_res) { // success 
-			$result = 'T';  
+		 
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
 
-
         // insert into invoice
+
         $invoice_insert_res = mysqli_query($conn, "INSERT INTO invoice 
 									       VALUES ('$rentInfo[invoice_id]', date'$rentInfo[invoice_date]',
 									       '$rentInfo[invoice_amount]', '$select_cust_id', $rentInfo[service_id],
-									       '$rentInfo[status]',0,0)
-									       ");
+									       '$rentInfo[status]', '0', '0')
+										   ");
+
 		if ($invoice_insert_res) { // success 
-			$result = 'T';  
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
@@ -225,16 +237,12 @@
 	    // ----- End -----
 
 	    mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
-
-		set_flag_execute($result);
-		// redict Status Result
-
-		header('location: ../totalCheck.php');
-
+		return 'T';
 	}
 
 	function insert_invoice($conn, $rentInfo) {
 
+	
 		mysqli_query($conn, "SET AUTOCOMMIT=0"); // not submit automatically
 
 		// ----- Begin -----
@@ -242,34 +250,33 @@
 
         // update services
         $service_update_res = mysqli_query($conn, "UPDATE services 
-        	                                       SET drop_date=date'$rentInfo[drop_date]', 
+        	                                       SET drop_date='$rentInfo[drop_date]', 
         	                                       end_odometer='$rentInfo[end_odometer]',
         	                                       drop_location_id='$rentInfo[drop_location_id]'
 									               WHERE service_id='$rentInfo[service_id]'
 									       ");
 		if ($service_update_res) { // success 
-			$result = 'T';  
+			 
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
 
-
         // update invoice
         $invoice_update_res = mysqli_query($conn, "UPDATE invoice 
-									               SET invoice_date=date'$rentInfo[invoice_date]',
+									               SET invoice_date='$rentInfo[invoice_date]',
 									               status='unpaid'
 									               WHERE invoice_id='$rentInfo[invoice_id]'
 									       ");
 		if ($invoice_update_res) { // success 
-			$result = 'T';  
+			
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
@@ -280,11 +287,11 @@
 									               WHERE vin='$rentInfo[vin]'
 									       ");
 	    if ($vehicle_update_res) { // success 
-			$result = 'T';  
+			 
 		}
 		else {
 		    mysqli_query($conn, "ROLLBACK");
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
@@ -296,11 +303,11 @@
 									               WHERE cust_id='$rentInfo[cust_id]'
 									       ");
 		    if ($indi_update_res) { // success 
-				$result = 'T';  
+				
 			}
 			else {
 			    mysqli_query($conn, "ROLLBACK");
-		        $result = 'F';
+		        return 'F';
 		        //exit(mysqli_error($conn));
 		        print_r(mysqli_error($conn));
 		    }
@@ -313,19 +320,15 @@
 	    // update invoice with discount
 	    $invoice_update_res = with_discount($conn, $rentInfo);
 
-		if ($invoice_update_res) { // success 
-			$result = 'T';  
+		if ($invoice_update_res) { // success   
 		}
 		else {
-	        $result = 'F';
+	        return 'F';
 	        //exit(mysqli_error($conn));
 	        print_r(mysqli_error($conn));
 	    }
 
-		set_flag_execute($result);
-		// redict Status Result
-
-		header('location: ../totalCheck.php');
+		return 'T';
 
 	}
 

@@ -39,9 +39,14 @@
 	    }
     } else {
     	$rentInfo['discount'] = select_corp_discount($conn, $cust_id);
-    }
+	}
+	
 
-	insert_invoice($conn, $rentInfo);
+	$result = insert_invoice($conn, $rentInfo);
+	set_flag_execute($result);
+	
+	// redict Status Result
+	header('location: ../totalCheck.php');
 
 
 ?>

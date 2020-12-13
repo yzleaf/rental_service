@@ -4,6 +4,7 @@
 	$user_type = getCookieVal('cookie_utype');
 	include ('./php_operation/conn.php');
 	include ('./php_operation/empRentSql.php');
+	require_once ('./php_operation/db_pay.php');
 	if (!isset($_POST['detail'])) { // whether click the button
     	$service_id = get_service_id('service_id');
 	} else {
@@ -138,7 +139,21 @@
 						<th>Payment Card Number</th>
 	
 					</tr>
-					
+					<?php 
+						$all_pay = select_all_payment($conn,$service_res['invoice_id']);
+						
+						while ($row = mysqli_fetch_array($all_pay)) {
+							print <<< EOF
+									<tr>
+										<td>$row[pay_id]</td>
+										<td>$row[pay_date]</td>
+										<td>$row[pay_method]</td>
+										<td>$row[pay_card_no]</td>
+									</tr>
+							EOF;
+
+						}
+					?>
 				</table>
 			</div>
 		</div>
