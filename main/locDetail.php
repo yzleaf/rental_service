@@ -29,6 +29,7 @@
 	<link rel="stylesheet" href="css/location.css">
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>  
     <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script src="js/swiper-bundle.min.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-default">
@@ -77,7 +78,32 @@
 		<div class="col-md-10 loc_info_total clearfix">
 			<h3><?php echo $loc?> office information</h3>
 			<div class="col-sm-4" style="padding: 0;">
-				<img class="loc_img" src="https://dummyimage.com/300x200/e000e0/fff">
+				<div class="swiper-container" style="width: 300px; height: 200px; margin-left:0;">
+					<div class="swiper-wrapper">
+				        <div class="swiper-slide">
+				        	<img src="./img/ca_office2.jpg" alt="" class="loc_img">
+				        </div>
+				        <div class="swiper-slide">
+				        	<img src="./img/office1.jpg" alt="" class="loc_img">
+				        </div>
+				        <div class="swiper-slide">
+				        	<img src="./img/office3.jpg" alt="" class="loc_img">
+				        </div>
+				    </div>
+				    <!-- 如果需要分页器 -->
+				    <div class="swiper-pagination"></div>
+				</div>
+				<script>        
+				    var mySwiper = new Swiper ('.swiper-container', {
+				    direction: 'horizontal', // 垂直切换选项
+				    loop: true, // 循环模式选项
+				    
+				    // 如果需要分页器
+				    pagination: {
+				      el: '.swiper-pagination',
+				    },
+				  })        
+				</script>
 			</div>
 			<div class="col-sm-8">
 				<div class="info">

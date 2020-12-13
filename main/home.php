@@ -57,13 +57,13 @@
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 	        <div class="swiper-slide">
-	        	<img src="https://dummyimage.com/800x400/e34be3/fff" alt="">
+	        	<img src="./img/car_1.png" alt="">
 	        </div>
 	        <div class="swiper-slide">
-	        	<img src="https://dummyimage.com/800x400/2255d6/fff" alt="">
+	        	<img src="./img/car_2.png" alt="">
 	        </div>
 	        <div class="swiper-slide">
-	        	<img src="https://dummyimage.com/800x400/22d437/fff" alt="">
+	        	<img src="./img/car_3.png" alt="">
 	        </div>
 	    </div>
 	    <!-- 如果需要分页器 -->
@@ -91,8 +91,7 @@
 	</script>
 	<div class="container">
 		<div class="col-md-1"></div>
-		<div class="col-md-10">
-		This is Home page: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sed harum optio vel atque inventore ipsa! Maiores blanditiis, voluptatibus itaque adipisci labore, illum perferendis harum cum aut soluta, omnis dolor.</div>
+		<div class="col-md-10" style="font-size: 150%; color:#AAAA55;">WOW adheres to the customer-oriented professional attitude, subverts the cumbersome traditional car rental model, and provides customers with a fast and convenient new car rental service experience. The company's service network in major cities and tourist areas, as well as 24-hour car pickup and return services and supporting services, can not only meet customers' car rental service needs anytime and anywhere, but also escort customers for safe driving.</div>
 		<div class="col-md-1"></div>
 	</div>
 	<div class="footer">
