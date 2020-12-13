@@ -225,8 +225,7 @@ function delete_indi($conn, $cust_name) {
         $invoice_id = $result['invoice_id'];
     }
     else {
-        return 'F1';
-        exit(mysqli_error($conn));
+        $invoice_id = "";
     }
 
     // 2: check whether there is unfinished or unpaid invoice
@@ -349,8 +348,7 @@ function delete_corp($conn, $cust_name) {
         $invoice_id = $result['invoice_id'];
     }
     else {
-        return 'F1';
-        exit(mysqli_error($conn));
+        $invoice_id = "";
     }
 
     // 2: check whether there is unfinished or unpaid invoice
