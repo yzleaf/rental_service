@@ -140,40 +140,53 @@
 		// ----- Begin -----
         mysqli_begin_transaction($conn);
 
-		$invoice_delete_res = mysqli_query($conn, "DELETE 
-			                               FROM invoice
-									       WHERE service_id='$service_id'");
-		if ($invoice_delete_res) { // success   
+		// 1: delete payment table
+		$sql_delete_payment = "DELETE FROM payment 
+								WHERE invoice_id='$service_id'
+								";   
+		$result = mysqli_query($conn, $sql_delete_payment);
+		if ($result) { // success   
 		}
 		else {
-		    mysqli_query($conn, "ROLLBACK");
-	        return 'F';
-	        //exit(mysqli_error($conn));
-	        print_r(mysqli_error($conn));
-	    }
-
-	    $service_delete_res = mysqli_query($conn, "DELETE 
-			                               FROM services
-									       WHERE service_id='$service_id'");
-		if ($service_delete_res) { // success 
-			 
+			mysqli_query($conn, "ROLLBACK");
+			return 'F';
+			exit(mysqli_error($conn));
+		}
+		
+		// 2: delete invoice table
+		$sql_delete_invoice = "DELETE FROM invoice 
+							   WHERE service_id='$service_id'
+							  ";   
+		$result = mysqli_query($conn, $sql_delete_invoice);
+		if ($result) { // success   
 		}
 		else {
-		    mysqli_query($conn, "ROLLBACK");
-	        return 'F';
-	        //exit(mysqli_error($conn));
-	        print_r(mysqli_error($conn));
-	    }
+			mysqli_query($conn, "ROLLBACK");
+			return 'F';
+			exit(mysqli_error($conn));
+		}
 
+		// 3: delete service table
+		$sql_delete_service = "DELETE FROM services 
+							   WHERE service_id='$service_id'
+							  ";   
+		$result = mysqli_query($conn, $sql_delete_invoice);
+		if ($result) { // success   
+		}
+		else {
+			mysqli_query($conn, "ROLLBACK");
+			return 'F';
+			exit(mysqli_error($conn));
+		}
+		// echo '0';
+		// die();
 	    mysqli_commit($conn); 
 	    // ----- End -----
 
 	    mysqli_query($conn, "SET AUTOCOMMIT=1"); //set submit automatically as the begining
 
 		return 'T';
-		// tianjia redirect!!!
-		
-
+	
 	}
 
 	function insert_service($conn, $rentInfo) {

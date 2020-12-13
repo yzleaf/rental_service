@@ -10,7 +10,10 @@
 		set_service_id($service_id);
 	}
 
-	delete_service($conn, $service_id);
+	$result = delete_service($conn, $service_id);
 
-
+	set_flag_execute($result);
+	// redict Status Result
+	header('location: ./totalCheck.php');
+	
 ?>
