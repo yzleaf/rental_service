@@ -87,11 +87,11 @@
 						</div>
 						<div class="form-group">
 							<label for="">pick_date</label>
-							<input type="text" class="form-control" id="pick_date" name="pick_date" value="" required=required>
+							<input type="text" class="form-control" id="pick_date" name="pick_date" value="" required=required placeholder="YYYY-MM-DD" >
 						</div>
 						<div class="form-group" hidden=hidden>
 							<label for="">drop_date</label>
-							<input type="text" class="form-control" id="drop_date" name="drop_date" value="2999-01-01" required=required readonly="readonly">
+							<input type="text" class="form-control" id="drop_date" name="drop_date" value="2999-01-01" required=required readonly="readonly" placeholder="YYYY-MM-DD" >
 						</div>
 						<div class="form-group">
 							<label for="">start_odometer</label>

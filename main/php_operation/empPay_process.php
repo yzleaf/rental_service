@@ -21,7 +21,6 @@ $pay_info['pay_amount'] = $_POST['pay_amount'];
 $pay_info['new_remain_amount'] =  $pay_info['remain_pay'] - $pay_info['pay_amount'];
 
 
-
 $result = update_pay($conn, $pay_info);
 
 // echo $result;

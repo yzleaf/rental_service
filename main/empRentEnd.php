@@ -87,7 +87,7 @@
 						</div>
 						<div class="form-group">
 							<label for="">drop_date</label>
-							<input type="text" class="form-control" id="drop_date" name="drop_date" value="" required=required>
+							<input type="text" class="form-control" id="drop_date" name="drop_date" value="" required=required placeholder="YYYY-MM-DD" >
 						</div>
 						<div class="form-group">
 							<label for="">end_odometer</label>
@@ -99,7 +99,7 @@
 						</div>
 						<div class="form-group">
 							<label for="">invoice_date</label>
-							<input type="text" class="form-control" id="invoice_date" name="invoice_date" value="" required=required>
+							<input type="text" class="form-control" id="invoice_date" name="invoice_date" value="" required=required placeholder="YYYY-MM-DD" >
 						</div>
 						<div class="form-group">
 							<label for="">coupon_id</label>

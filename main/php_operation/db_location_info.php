@@ -15,7 +15,7 @@
 
 
 	function allLoc($conn) { // get all location information
-		$check = mysqli_query($conn, "SELECT * FROM location");
+		$check = mysqli_query($conn, "SELECT * FROM location WHERE location_id<>9999");
 		return $check;
 	}
 
