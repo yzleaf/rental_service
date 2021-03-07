@@ -102,7 +102,7 @@
 				<th>Phone Number</th><td><?php echo $cust_res['cust_phone_no'] ?></td>
 			</tr>
 			<tr>
-				<th>Street</th><td><?php echo $cust_res['cust_street'] ?></td>
+				<th>Street</th><td><?php echo htmlspecialchars($cust_res['cust_street']) ?></td>
 			</tr>
 			<tr>
 				<th>City</th><td><?php echo $cust_res['cust_city'] ?></td>

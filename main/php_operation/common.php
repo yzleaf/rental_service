@@ -13,7 +13,7 @@ function getCookieVal($cookie_name) { // $key is the information(id/type) of use
 
 
 function login($name, $utype, $ctype) {
-    setcookie ( 'cookie_uname', $name);
+    setcookie ( 'cookie_uname', $name, null, null, null, null, true);
     setcookie ( 'cookie_utype', $utype);
     setcookie ( 'cookie_ctype', $ctype);
 }
